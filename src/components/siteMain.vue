@@ -210,6 +210,66 @@
 
 
     <section id="ourStaff">
+        <div class="jumboImage"></div>
+
+        <div class="jumboText">
+
+            <div class="myContainer">
+                <div class="row">
+
+                    <div class="col">
+                      textHere
+                    </div>
+
+                    <div class="col text-end">
+                        <button>
+                            more
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /jumboText -->
+
+        <div class="meetUs">
+            <div class="myContainer text-center">
+                <div class="row">
+
+                    <div class="col-12">
+                        <h2>
+                            TITLE MEET US
+                        </h2>
+                    </div>
+                    <!-- / title -->
+
+                    <div class="col-6">
+                        description
+                    </div>
+                    <div class="col-6">
+                        description
+                    </div>
+                </div>
+                <!-- / row -->
+
+                <div class="row py-3">
+                    <div class="col-6">
+                        cards and imGs
+                    </div>
+                    <div class="col-6">
+                        cards and imGs
+                    </div>
+                    <div class="col-6">
+                        cards and imGs
+                    </div>
+                    <div class="col-6">
+                        cards and imGs
+                    </div>
+                </div>
+                <!-- / row 2 -->
+            </div>
+        </div>
     </section>
     <!-- 
         / OUR STAFF
@@ -284,6 +344,15 @@ export default {
           .icons p{
             background-color: darkgoldenrod;
           }
+        }
+      }
+      /* 
+          / OUR CLASS
+      */
+
+      #ourStaff {
+        .jumboText {
+          background-color: lightcoral;
         }
       }
   }
