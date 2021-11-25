@@ -91,11 +91,124 @@
 
 
     <section id="ourClass">
+
+      <div class="jumboImage">
+          <div class="myContainer">
+              <div class="row">
+                  <div class="col-3">rounded-contents</div>
+                  <div class="col-3">rounded-contents</div>
+                  <div class="col-3">rounded-contents</div>
+                  <div class="col-3">rounded-contents</div>
+              </div>
+          </div>
+      </div>
+      <!-- / JUMBO IMAGE -->
+
+      <div class="classes">
+          <div class="myContainer">
+              <div class="row g-2 py-3">
+
+                  <div class="title col-12 text-center">
+                      <h2>
+                          OUR CLASSES
+                      </h2>
+                  </div>
+                  <!-- / title -->
+
+                  <div class="col-6">
+                      <p>
+                          descript.
+                      </p>
+                  </div>
+                  <!--  -->
+
+                  <div class="col-6">
+                      <p>
+                          descript.
+                      </p>
+                  </div>
+                  <!--  -->
+
+                  <div class="col-6">
+                    <div class="card">
+                        cards imgs
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="card">
+                        cards imgs
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="card">
+                        cards imgs
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="card">
+                        cards imgs
+                    </div>
+                  </div>
+                  <!-- / cards -->
+
+              </div>
+          </div>
+      </div>
+      <!--  / CLASSES DESCR. -->
+
+      <div class="aboutUs">
+          <div class="myContainer">
+
+            <div class="row py-5">
+                <div class="col-6">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat magnam perspiciatis voluptatem dicta quo illo, delectus eum impedit sapiente esse numquam cum, nostrum quasi quis quisquam earum non nam.
+                </div>
+              <!-- text -->
+
+                <div class="col-6">
+
+                    <div class="icons row">
+                        <div class="col-6">
+                          <p>
+                            rounded icons
+                          </p>
+                        </div>
+                        <div class="col-6">
+                          <p>
+                            rounded icons
+                          </p>
+                        </div>
+                        <div class="col-6">
+                          <p>
+                            rounded icons
+                          </p>
+                        </div>
+                        <div class="col-6">
+                          <p>
+                            rounded icons
+                          </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- / icons -->
+
+            </div>
+            <!-- / row -->
+          </div>
+      </div>
+      <!-- / about us -->
+
     </section>
     <!-- 
         / OUR CLASS
      -->
      
+
+
+
     <section id="ourStaff">
     </section>
     <!-- 
@@ -123,25 +236,55 @@ export default {
 </script>
 
 <style lang="scss">
-  #welcomeToFable {
+  main {
+
       .jumboImage {
           width: 100%;
           height: 400px;
           background-color: greenyellow;
       }
-      .jumboText {
-        background-color: cornflowerblue;
-      }
+      #welcomeToFable {
+          .jumboText {
+            background-color: cornflowerblue;
+          }
 
-      .welcome {
-        text-align: center;
-        .col-3 {
-          text-align: center;
+          .welcome {
+            text-align: center;
+            .col-3 {
+              text-align: center;
+            }
+          }
+          .overview {
+            background: rgb(214, 214, 214);
+          }
+      }
+    /* 
+        / welcomeToFable
+    */
+
+      #ourClass {
+        .myContainer {
+          height: 100%;
+
+            .row {
+              height: 100%;
+              align-items: center;
+            }
+        }
+        
+        .classes {
+            .card {
+              background-color: cornflowerblue;
+              height: 100px;
+            }
+        }
+
+        .aboutUs {
+            background-color: rgb(224, 224, 224);
+          .icons p{
+            background-color: darkgoldenrod;
+          }
         }
       }
-      .overview {
-        background: rgb(214, 214, 214);
-      }
   }
-
 </style>
