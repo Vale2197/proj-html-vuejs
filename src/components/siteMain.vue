@@ -1,7 +1,9 @@
 <template>
   <main>
     <section id="welcomeToFable">
-        <div class="jumboImage">
+        <div class="jumboImage position-relative">
+          <img class="trenino" :src="trainImg" alt="#">
+          <img class="lego" src="/fable/img/slider_slide3_img3.png" alt="#">
         </div>
         <!-- /hero image -->
 
@@ -369,7 +371,11 @@
 
 <script>
 export default {
-
+    data() {
+      return {
+        trainImg: '/fable/img/logo.png',
+      }
+    }
 }
 </script>
 
@@ -379,9 +385,26 @@ export default {
       .jumboImage {
           width: 100%;
           height: 400px;
-          background-color: greenyellow;
       }
       #welcomeToFable {
+          .jumboImage {
+              background-image: url("/fable/img/slider_slide3_background.png");
+              background-repeat: repeat;
+              background-size: contain;
+              
+              .trenino {
+                position: absolute;
+                bottom: 1rem;
+                left: 50%;
+                transform: translate(-50%, 0);
+              }
+
+              .lego {
+                position: absolute;
+                left: 80%;
+                bottom: 1rem;
+              }
+          }
           .jumboText {
             background-color: cornflowerblue;
           }

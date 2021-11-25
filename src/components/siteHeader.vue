@@ -4,45 +4,12 @@
 
           <div class="row align-items-stretch">
               <div class="logo col">
-                  <img src="../assets/fable/img/logo.png" alt="FableLogo">
+                  <img src="/fable/img/logo.png" alt="FableLogo">
               </div>
               <!-- / logo -->
               <div class="navBar col">
                   <ul class="navItems d-flex">
-                        <li>
-                            <img src="../assets/fable/home.png" alt="#">
-                            <a href="#"> Home </a>
-                        </li> 
-
-                        <li>
-                            <img src="../assets/fable/document.png" alt="#">
-                            <a href="#"> Pages </a>
-                        </li>
-
-                        <li>
-                            <img src="../assets/fable/printer.png" alt="#">
-                            <a href="#"> Blog </a>
-                        </li>
-
-                        <li>
-                            <img src="../assets/fable/cart.png" alt="#">
-                            <a href="#"> Shop </a>
-                        </li>
-
-                        <li>
-                            <img src="../assets/fable/lab.png" alt="#">
-                            <a href="#"> ShortCodes </a>
-                        </li>
-
-                        <li>
-                            <img src="../assets/fable/chat.png" alt="#">
-                            <a href="#"> Support </a>
-                        </li>
-
-                        <li>
-                            <img src="../assets/fable/envelope.png" alt="#">
-                            <a href="#"> Contact </a>
-                        </li>   
+                        <linkHeader v-for="link in headerLinks" :key="link.title" :image="link.img" :title="link.title"/>
                   </ul>
               </div>
               <!-- / nav -->
@@ -54,11 +21,50 @@
 </template>
 
 <script>
+import linkHeader from "./linkHeader.vue";
 
 export default {
+    components: {
+        linkHeader
+    },
     data() {
         return {
-            
+            headerLinks: [
+                {
+                    title: 'Home',
+                    img: '/fable/home.png'
+                },
+
+                {
+                    title: 'Pages',
+                    img: '/fable/document.png'
+                },
+
+                {
+                    title: 'Blog',
+                    img: '/fable/printer.png'
+                },
+
+                {
+                    title: 'Shop',
+                    img: '/fable/cart.png'
+                },
+
+                {
+                    title: 'Shortcodes',
+                    img: '/fable/lab.png'
+                },
+
+                {
+                    title: 'Support',
+                    img: '/fable/chat.png'
+                },
+
+                {
+                    title: 'Contact',
+                    img: '/fable/envelope.png'
+                }
+            ]
         }
     },
 }
