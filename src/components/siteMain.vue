@@ -324,6 +324,42 @@
      -->
 
     <section id="contactUs">
+        <div class="jumboImage"></div>
+        <!-- / jumbo img -->
+
+        <div class="contact">
+             <div class="myContainer">
+                  <div class="row">
+
+                      <div class="title col-12 text-center">
+                          <h2>
+                              CONTACT US
+                          </h2>
+                      </div>
+                      <!-- / title -->
+
+                      <div class="col-3"> CARDS </div>
+                      <div class="col-3"> CARDS </div>
+                      <div class="col-3"> CARDS </div>
+                      <div class="col-3"> CARDS </div>
+                      <!-- / cards -->
+
+                      <div class="userContact col-6">
+                          contact form
+                      </div>
+                      <div class="txtArea col-6">
+                          text area
+                      </div>
+                      <!-- / form -->
+                      <div class="text-center col-12">
+                          <button>
+                              send
+                          </button>
+                      </div>
+                  </div>
+                  <!-- / row -->
+             </div>
+        </div>
     </section>
     <!-- 
         / CONTACT US
