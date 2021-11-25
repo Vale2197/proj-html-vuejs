@@ -276,6 +276,48 @@
      -->
 
     <section id="news">
+        <div class="jumboImage">
+            <div class="myContainer">
+                <div class="row text-center">
+                    <div class="col-12">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, soluta.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- / jumbo img -->
+
+        <div class="whatsNew">
+            <div class="myContainer py-5 text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>
+                            TITLE NEWS
+                        </h2>
+                    </div>
+                </div>
+                <!-- / TITLE -->
+                <div class="row">
+                    <div class="col-4">
+                        cards
+                    </div>
+                    <div class="col-4">
+                        cards
+                    </div>
+                    <div class="col-4">
+                        cards
+                    </div>
+                    <!-- / cards -->
+                    <div class="col-12">
+                        <button>
+                            button
+                        </button>
+                    </div>
+                </div>
+                <!-- / CARDS -->
+            </div>
+        </div>
+        <!-- / WHATS NEW -->
     </section>
     <!-- 
         / NEWS
@@ -353,6 +395,19 @@ export default {
       #ourStaff {
         .jumboText {
           background-color: lightcoral;
+        }
+      }
+      /* 
+          / OUR STAFF
+      */
+
+      #news {
+        .myContainer {
+          height: 100%;
+          .row {
+            height: 100%;
+            align-items: center;
+          }
         }
       }
   }
