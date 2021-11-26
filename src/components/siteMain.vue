@@ -2,8 +2,11 @@
   <main>
     <section id="welcomeToFable">
         <div class="jumboImage position-relative">
-          <img class="trenino" :src="trainImg" alt="#">
+          <img class="trenino" src="/fable/img/slider_slide3_img2.png" alt="#">
           <img class="lego" src="/fable/img/slider_slide3_img3.png" alt="#">
+          <div class="slideBars">
+              <div class="bar" v-for="index in 3" :key="index"></div>
+          </div>
         </div>
         <!-- /hero image -->
 
@@ -12,14 +15,14 @@
             <div class="myContainer">
               <div class="row justify-between">
                 <div class="col">
-                   <p>
-                  Lorem, ipsum dolor.
+                  <p>
+                      How to Enroll your Child to a Class?   
                   </p>
                 </div>
 
-                <div class="col text-end">
-                    <button>
-                        learn more
+                <div class="col justify-content-end">
+                    <button class="btn">
+                        learn more <img style="width: 2rem" src="/fable/img/slider_next.png" alt="">
                     </button>
                 </div>
                
@@ -33,16 +36,25 @@
             <div class="myContainer">
 
               <div class="row justify-between">
-                  <div class="col-12">
-                    <h2>
-                        WELCOME
-                    </h2>
+                  <div class="title col-12 pb-5">
+                      <h2 class="fs-1 fw-light">
+                          Welcome to Fable
+                      </h2>
+
+                      <p class="fs-6 py-3">
+                          Fable daycare, preschool and kindergarten
+                      </p>
+
+                      <img src="/fable/img/header_divider.png" alt="#">
                   </div>
                   <!-- /title -->
-                  <div class="col-3">contents</div>
-                  <div class="col-3">contents</div>
-                  <div class="col-3">contents</div>
-                  <div class="col-3">contents</div>
+                  
+                  <simpleCard v-for="(card, index) in welcomeCards" :key="index" :class="'col-3'" 
+                  :image="card.img" 
+                  :imgClass="'rounded-circle' +  pari(index)"
+                  :titolo="card.title" 
+                  :description="card.paragraph" />
+                      
               </div>
               <!-- / row -->
             </div>
@@ -52,26 +64,75 @@
         <div class="overview py-5">
           <div class="myContainer">
 
-              <div class="row">
+              <div class="row py-3 align-items-center">
                   <div class="col-6">
-                    textHere
+                      <button class="btn bgOrange mb-4">
+                          Overview
+                      </button>
+                      <button class="unactive btn mb-4">
+                          Our Mission
+                      </button>
+                      <p class="title fs-4 mb-4">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia?
+                      </p>
+                      <!-- / overview title -->
+
+
+                      <div class="description d-flex mb-3">
+
+                          <div class="me-3">
+                            <div class="img rounded-circle bgOrange">
+                                <img src="/fable/img/clock_alt.png" alt="#">
+                            </div>
+                          </div>
+                          
+                          <div class="txt">
+                              <p class="title fs-5 mb-1">
+                                  Full day session
+                              </p>
+                              <p class="fs-6 descr">
+                                  Lorem, ipsum dolor.
+                              </p>
+                          </div>
+                      </div>
+                      <!--  -->
+
+                      <div class="description d-flex">
+                          <div class="me-3">
+                            <div class="img rounded-circle bgOrange">
+                                <img src="/fable/img/diagram_alt.png" alt="#">
+                            </div>
+                          </div>
+                          
+                          <div class="txt">
+                              <p class="fs-5 mb-1 title">
+                                  Full day session
+                              </p>
+                              <p class="descr fs-6">
+                                  Lorem, ipsum dolor.
+                              </p>
+                          </div>
+                      </div>
+                    <!-- / DESCRIPTION -->
                   </div>
                   <!-- 
                     / txt e overview
                    -->
                   <div class="col-6">
-                    <div class="row">
-                      <div class="col-12">
-                          ACTIVE-IMG
+                    <div class="row g-2">
+                      <div class="col-12 position-relative">
+                          <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
+                          <img class="nextSlide position-absolute top-50 end-0 " src="/fable/img/slider_next.png" alt="#">
+                          <img class="prevSlide position-absolute top-50 start-0 " src="/fable/img/slider_previous.png" alt="#">
                       </div>
-                      <div class="col-4">
-                        other imgs
+                      <div class="col-4 pb-2">
+                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
                       </div>
-                      <div class="col-4">
-                        other imgs
+                      <div class="slideActiveImg col-4 pb-2">
+                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
                       </div>
-                      <div class="col-4">
-                        other imgs
+                      <div class="col-4 pb-2">
+                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
                       </div>
                     </div>
                     <!-- / row -->
@@ -370,10 +431,48 @@
 </template>
 
 <script>
+import simpleCard from "./simpleCard.vue";
 export default {
+    components: {
+      simpleCard
+    },
+
     data() {
       return {
-        trainImg: '/fable/img/logo.png',
+          welcomeCards: [
+            {
+              title: 'Morbi Etos',
+              paragraph: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis qui omnis debitis eaque non et laudantium ipsum, quod dignissimos nihil.',
+              img: '/fable/img/schoolbag_alt.png'
+            },
+            {
+              title: 'Congue Gravida',
+              paragraph: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis qui omnis debitis eaque non et laudantium ipsum, quod dignissimos nihil.',
+              img: '/fable/img/stroller_alt.png'
+            },
+            {
+              title: 'Maecenas Node',
+              paragraph: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis qui omnis debitis eaque non et laudantium ipsum, quod dignissimos nihil.',
+              img: '/fable/img/globe_alt.png'
+            },
+            {
+              title: 'Praesent Morbi',
+              paragraph: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis qui omnis debitis eaque non et laudantium ipsum, quod dignissimos nihil.',
+              img: '/fable/img/bell_alt.png'
+            }
+          ],
+          
+      }
+    },
+
+    methods: {
+      pari(index) {
+        if(index % 2 != 0) {
+          return ' bgPurple'
+        }
+        else{
+          return ' bgOrange'
+        }
       }
     }
 }
@@ -381,6 +480,24 @@ export default {
 
 <style lang="scss">
   main {
+        
+        .title {
+          color:  #56509f;
+        }
+
+      
+        .descr {
+                  color: grey;
+                }
+        
+
+       .bgPurple {
+                       background-color: #56509f ;
+                  }
+
+        .bgOrange {
+          background-color: #fd6500 ;
+        }
 
       .jumboImage {
           width: 100%;
@@ -391,33 +508,137 @@ export default {
               background-image: url("/fable/img/slider_slide3_background.png");
               background-repeat: repeat;
               background-size: contain;
+
+              .slideBars {
+                    display: flex;
+                    position: absolute;
+                    bottom: 1rem;
+                    left: 50%;
+                    transform: translate(-50%);
+
+                    .bar {
+                        width: 2rem;
+                        height: 0.7rem;
+                        margin: 0 0.5rem;
+                        border: 3px solid orange;
+                    }
+              }
               
               .trenino {
-                position: absolute;
-                bottom: 1rem;
-                left: 50%;
-                transform: translate(-50%, 0);
+                  position: absolute;
+                  bottom: 3rem;
+                  left: 50%;
+                  transform: translate(-50%, 0);
+                  width: 200px;
               }
 
               .lego {
                 position: absolute;
                 left: 80%;
-                bottom: 1rem;
+                bottom: 3rem;
+                width: 150px;
               }
           }
+
+          /* 
+              / JUMBO IMAGE
+          */
           .jumboText {
-            background-color: cornflowerblue;
+            background-image: url("/fable/img/pattern.png");
+
+              .col {
+                height: 5rem;
+                display: flex;
+                align-items: center;
+
+                p {
+                  margin: 0;
+                  font-size: 1.5rem;
+                  color: white;
+                }
+
+                button {
+                      border: 2px solid white;
+                      color: white;
+                      border-radius: 0;
+                }
+              }
           }
+          /*  / jumbo text */
 
           .welcome {
             text-align: center;
-            .col-3 {
+            .title {
+              h2 {
+              color:  #56509f;
+              }
+
+              p {
+                color: grey;
+              }
+            }
+            /* / title */
+            
+            .welcomeCard {
               text-align: center;
+                  
+                  .img {
+                        width: 150px;
+                        height: 150px;
+                        margin: auto;
+                        position: relative;
+                  }
+
+                  img {
+                    padding: 1rem;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100px;
+                  }
             }
           }
+          /* / WELCOME */
+
+
+
           .overview {
-            background: rgb(214, 214, 214);
+            background: #f5f5f5;
+           
+            button {
+              color: white;
+              border-radius: 0;
+            }
+
+            button.unactive {
+              color: grey;
+              border-bottom: 1px solid gray;
+              margin-left: 1rem;
+            }
+            .img {
+              padding: 1rem;
+              img {
+                width: 1.5rem;
+              }
+            }
+            
+            /* / OVERVIEW TEXT */
+            .nextSlide {
+                transform: translate(0, -50%);
+                background-color: #fd6500;
+            }
+
+            .prevSlide {
+                transform: translate(0, -50%);
+                background-color: #fd6500;
+            }
+
+            .slideActiveImg {
+              border-bottom: 2px solid #fd6500;
+            }
           }
+          
       }
     /* 
         / welcomeToFable
