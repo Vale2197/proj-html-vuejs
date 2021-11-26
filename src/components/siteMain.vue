@@ -156,66 +156,113 @@
     <section id="ourClass">
 
       <div class="jumboImage">
+        <div class="overlay">
           <div class="myContainer">
               <div class="row">
-                  <div class="col-3">rounded-contents</div>
-                  <div class="col-3">rounded-contents</div>
-                  <div class="col-3">rounded-contents</div>
-                  <div class="col-3">rounded-contents</div>
+                <!-- cerchi -->
+                  <div v-for="index in 4" :key="index" class="col-3 text-center">
+                      <div class="img mb-2">
+                          <span class="fs-1 fw-light">
+                              500
+                          </span>
+                      </div>
+
+                      <div class="txt">
+                          <p class="fs-4">
+                              Lorem, ipsum.
+                          </p>
+                          <p class="fs-6">
+                              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                          </p>
+                      </div>
+                  </div>
+                  <!-- / cerchio -->
+                  <div class="col-12 d-flex justify-content-center">
+                      <div v-for="index in 6" :key="index" class="slideBars">
+                      </div>
+                  </div>
               </div>
           </div>
+        </div>
       </div>
       <!-- / JUMBO IMAGE -->
 
       <div class="classes">
-          <div class="myContainer">
-              <div class="row g-2 py-3">
+          <div class="myContainer pb-4">
+              <div class="row py-5">
 
-                  <div class="title col-12 text-center">
-                      <h2>
-                          OUR CLASSES
+                  <div class="title col-12 text-center mb-5">
+                      <h2 class="fs-1 fw-light">
+                          Our Classes
                       </h2>
+                      <p class="fs-6 descr">
+                          Lorem ipsum dolor sit.
+                      </p>
+                      <img src="/fable/img/header_divider.png" alt="#">
                   </div>
                   <!-- / title -->
 
                   <div class="col-6">
-                      <p>
-                          descript.
+                      <p class="fs-4 title">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis ea modi vero, facere ipsum.
                       </p>
                   </div>
-                  <!--  -->
+                  <!-- / paragraph -->
 
                   <div class="col-6">
-                      <p>
-                          descript.
+                      <p class="fs-6 descr">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, nostrum. Magni veniam beatae asperiores dignissimos aliquam quos fuga facere illo.
                       </p>
                   </div>
-                  <!--  -->
+                  <!-- / description -->
 
-                  <div class="col-6">
-                    <div class="card">
-                        cards imgs
-                    </div>
-                  </div>
+                  <!-- card -->
+                  <div class="row g-3 pt-4">
+                      <div v-for="index in 4" :key="index" class="col-6 d-flex">
+                          <div class="myCard col-6 d-flex flex-wrap ">
+                              <div class="pt-3 ps-3 col-12 mb-5">
+                                  <p class="fs-4">
+                                     Little Lambs
+                                  </p>
+                                  <p class="fs-6 fw-light">
+                                    Class Name
+                                  </p>
+                              </div>
+                              <!-- / title -->
 
-                  <div class="col-6">
-                    <div class="card">
-                        cards imgs
-                    </div>
-                  </div>
+                              <div class=" yearsCol col-6 mb-2 text-center">
+                                  <p class="fs-5">
+                                     12-24
+                                  </p>
+                                  <p class="fs-6 fw-light">
+                                      Month old
+                                  </p>
+                              </div>
+                              <!-- / years -->
 
-                  <div class="col-6">
-                    <div class="card">
-                        cards imgs
-                    </div>
-                  </div>
+                              <div class="col-6 mb-2 text-center ">
+                                 <p class="fs-5">
+                                     9
+                                  </p>
+                                  <p class="fs-6 fw-light">
+                                      Class size
+                                  </p>
+                              </div>
+                              <!-- / class size -->
+                          </div>
 
-                  <div class="col-6">
-                    <div class="card">
-                        cards imgs
-                    </div>
+                          <div class="col-6 position-relative">
+                              <img src="/fable/img/gallery_04.jpg" alt="#">
+                              <button class="btn position-absolute bottom-0 end-0 bgOrange d-flex align-items-center">
+                                  READ MORE
+                                  <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
+                              </button>
+                          </div>
+                          <!-- / card image -->
+                      </div>
+                  <!-- / card -->
                   </div>
-                  <!-- / cards -->
+                  
 
               </div>
           </div>
@@ -225,35 +272,38 @@
       <div class="aboutUs">
           <div class="myContainer">
 
-            <div class="row py-5">
+            <div class="row py-5 align-items-start">
                 <div class="col-6">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minus quaerat magnam perspiciatis voluptatem dicta quo illo, delectus eum impedit sapiente esse numquam cum, nostrum quasi quis quisquam earum non nam.
+                    <h2 class="title fs-4 fw-normal">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, quasi quis deleniti esse nam ut veritatis. Obcaecati, laudantium a debitis et consectetur est
+                    </h2>
+                    <p class="fs-6 descr py-5">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt incidunt enim minus. Provident quaerat voluptatem error recusandae rerum totam ipsa?
+                    </p>
+                    <ul class="p-0">
+                        <li v-for="index in 6" :key="index" class="fs-6 descr mb-2">
+                            <img class="me-2" src="/fable/img/style_1.png" alt="#"> Lorem ipsum dolor sit amet consectetur.
+                        </li>
+                    </ul>
                 </div>
               <!-- text -->
 
                 <div class="col-6">
 
                     <div class="icons row">
-                        <div class="col-6">
-                          <p>
-                            rounded icons
-                          </p>
+                        <div class="col-6 text-center mb-3" v-for="index in 4" :key="index">
+                              <div class="img mb-3 position-relative">
+                                <img class="position-absolute top-50 start-50 translate-middle" src="/fable/img/toy.png" alt="#">
+                              </div>
+                              <p class="title fs-5 fw-normal">
+                                  Lorem, ipsum dolor.
+                              </p>
+                              <p class="fs-6 descr">
+                                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                              </p>
                         </div>
-                        <div class="col-6">
-                          <p>
-                            rounded icons
-                          </p>
-                        </div>
-                        <div class="col-6">
-                          <p>
-                            rounded icons
-                          </p>
-                        </div>
-                        <div class="col-6">
-                          <p>
-                            rounded icons
-                          </p>
-                        </div>
+                        <!-- /aboutUs card -->
+
                     </div>
                 </div>
                 <!-- / icons -->
@@ -579,25 +629,6 @@ export default {
             }
             /* / title */
             
-            .welcomeCard {
-              text-align: center;
-                  
-                  .img {
-                        width: 150px;
-                        height: 150px;
-                        margin: auto;
-                        position: relative;
-                  }
-
-                  img {
-                    padding: 1rem;
-                    position: absolute;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 100px;
-                  }
-            }
           }
           /* / WELCOME */
 
@@ -645,6 +676,36 @@ export default {
     */
 
       #ourClass {
+        .jumboImage {
+            background-image: url("/fable/img/gallery_07-690x506.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 500px;
+
+            .overlay {
+                  height: 100%;
+                  background-color: #00000080;
+                  color: white;
+
+                  .img span {
+                        display: block;
+                        width: 8rem;
+                        height: 8rem;
+                        line-height: 8rem;
+                        margin: auto;
+                        border-radius: 50%;
+                        border: 1px solid white;
+                  }
+
+                  .slideBars {
+                      width: 2rem;
+                      height: 0.7rem;
+                      border: 1px solid white;
+                      margin-right: 1rem;
+                  }
+            }
+        }
         .myContainer {
           height: 100%;
 
@@ -655,16 +716,42 @@ export default {
         }
         
         .classes {
-            .card {
-              background-color: cornflowerblue;
-              height: 100px;
+            p {
+              margin: 0;
+            }
+            .myCard {
+              background-color: #56509f;
+              color: white;
+
+              .yearsCol {
+                border-right: 1px solid rgba(255, 255, 255, 0.212);
+              }
+              
+            }
+
+            img {
+                  max-width: 100%;
+                  height: 100% ;
+                  object-fit: cover;
+              }
+
+             button {
+              color: white;
+              border-radius: 0;
             }
         }
 
         .aboutUs {
-            background-color: rgb(224, 224, 224);
-          .icons p{
-            background-color: darkgoldenrod;
+            background-color: #f5f5f5;
+            ul {
+              list-style-type: none;
+            }
+          .icons .img{
+                  width: 80px;
+                  height: 80px;
+                  margin: auto;
+                  background-color: white;
+                  border-radius: 50%;
           }
         }
       }

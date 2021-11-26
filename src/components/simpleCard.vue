@@ -25,5 +25,23 @@ export default {
 </script>
 
 <style lang="scss">
+    .welcomeCard {
+              text-align: center;
+                  
+                  .img {
+                        width: 150px;
+                        height: 150px;
+                        margin: auto;
+                        position: relative;
+                  }
 
+                  img {
+                    padding: 1rem;
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100px;
+                  }
+            }
 </style>
