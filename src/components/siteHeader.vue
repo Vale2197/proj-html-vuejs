@@ -104,7 +104,7 @@ export default {
                     transition: 0.3s;
 
                     &:hover {
-                        background-color: #fd6500;
+                        background-color: #d2405d;
                     }
 
                     img {

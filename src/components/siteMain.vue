@@ -45,7 +45,7 @@
                           Fable daycare, preschool and kindergarten
                       </p>
 
-                      <img src="/fable/img/header_divider.png" alt="#">
+                      <img class="imgColor" src="/fable/img/header_divider.png" alt="#">
                   </div>
                   <!-- /title -->
                   
@@ -161,7 +161,7 @@
               <div class="row">
                 <!-- cerchi -->
                   <div v-for="index in 4" :key="index" class="col-3 text-center">
-                      <div class="img mb-2">
+                      <div class="img imgColor mb-2">
                           <span class="fs-1 fw-light">
                               500
                           </span>
@@ -198,7 +198,7 @@
                       <p class="fs-6 descr">
                           Lorem ipsum dolor sit.
                       </p>
-                      <img src="/fable/img/header_divider.png" alt="#">
+                      <img class="imgColor" src="/fable/img/header_divider.png" alt="#">
                   </div>
                   <!-- / title -->
 
@@ -282,7 +282,7 @@
                     </p>
                     <ul class="p-0">
                         <li v-for="index in 6" :key="index" class="fs-6 descr mb-2">
-                            <img class="me-2" src="/fable/img/style_1.png" alt="#"> Lorem ipsum dolor sit amet consectetur.
+                            <img class="me-2 imgColor" src="/fable/img/style_1.png" alt="#"> Lorem ipsum dolor sit amet consectetur.
                         </li>
                     </ul>
                 </div>
@@ -292,7 +292,7 @@
 
                     <div class="icons row">
                         <div class="col-6 text-center mb-3" v-for="index in 4" :key="index">
-                              <div class="img mb-3 position-relative">
+                              <div class="img imgColor mb-3 position-relative">
                                 <img class="position-absolute top-50 start-50 translate-middle" src="/fable/img/toy.png" alt="#">
                               </div>
                               <p class="title fs-5 fw-normal">
@@ -330,13 +330,13 @@
             <div class="myContainer">
                 <div class="row">
 
-                    <div class="col">
-                      textHere
+                    <div class="col fs-3 fw-light">
+                      See our Kindergarten Photo Gallery
                     </div>
 
-                    <div class="col text-end">
-                        <button>
-                            more
+                    <div class="col justify-content-end">
+                        <button class="btn">
+                            View Gallery <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                         </button>
                     </div>
 
@@ -347,38 +347,66 @@
         <!-- /jumboText -->
 
         <div class="meetUs">
-            <div class="myContainer text-center">
-                <div class="row">
+            <div class="myContainer">
+                <div class="row py-5">
 
-                    <div class="col-12">
-                        <h2>
-                            TITLE MEET US
+                    <div class="col-12 mb-5 text-center">
+                        <h2 class="fs-1 fw-light">
+                          Meet Our Staff
                         </h2>
+                        <p class="fs-6 descr">
+                            Lorem ipsum dolor sit.
+                        </p>
+                        <img class="imgColor" src="/fable/img/header_divider.png" alt="#">
                     </div>
                     <!-- / title -->
 
                     <div class="col-6">
-                        description
+                      <p class="fs-4 title">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum quis ea modi vero, facere ipsum.
+                      </p>
                     </div>
+                    <!-- / paragraph -->
+
                     <div class="col-6">
-                        description
-                    </div>
+                      <p class="fs-6 descr">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, nostrum. Magni veniam beatae asperiores dignissimos aliquam quos fuga facere illo.
+                      </p>
+                  </div>
+                  <!-- / description -->
                 </div>
                 <!-- / row -->
 
-                <div class="row py-3">
-                    <div class="col-6">
-                        cards and imGs
+                <div class="row py-4 g-4">
+
+                  <!-- card -->
+                    <div v-for="index in 4" :key="index" class="myCard col-6 d-flex">
+                        <div class="col-6 text-center">
+                            <img class="img-fluid" src="/fable/img/gallery_08-690x506.jpg" alt="#">
+                            <p class="fs-5 title m-0 mt-3">
+                                Name T.
+                            </p>
+                            <p class="fs-6 descr">
+                                teacher
+                            </p>
+                        </div>
+                        <!-- /teacher name -->
+
+                        <div class="col-6 description">
+                            <div class="img">
+                                <img class="imgColor btn" src="/fable/img/quote.png" alt="#">
+                            </div>
+                            <p class="fs-6 descr">
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo accusantium veniam nesciunt hic, sit molestiae?
+                            </p>
+                            <div class="icons">
+                                <img class="bgOrange" src="/fable/img/mail.png" alt="#">
+                                <img class="bgOrange" src="/fable/img/facebook.png" alt="#">
+                                <img class="bgOrange" src="/fable/img/pinterest.png" alt="#">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-                        cards and imGs
-                    </div>
-                    <div class="col-6">
-                        cards and imGs
-                    </div>
-                    <div class="col-6">
-                        cards and imGs
-                    </div>
+                    <!-- / card -->
                 </div>
                 <!-- / row 2 -->
             </div>
@@ -529,7 +557,15 @@ export default {
 </script>
 
 <style lang="scss">
+:root {
+  --mainColor: #d2405d;
+}
   main {
+
+        .imgColor {
+            filter: hue-rotate(
+            322deg) brightness(0.9);
+        }
         
         .title {
           color:  #56509f;
@@ -546,7 +582,7 @@ export default {
                   }
 
         .bgOrange {
-          background-color: #fd6500 ;
+          background-color: #d2405d ;
         }
 
       .jumboImage {
@@ -570,7 +606,7 @@ export default {
                         width: 2rem;
                         height: 0.7rem;
                         margin: 0 0.5rem;
-                        border: 3px solid orange;
+                        border: 3px solid var(--mainColor);
                     }
               }
               
@@ -657,16 +693,16 @@ export default {
             /* / OVERVIEW TEXT */
             .nextSlide {
                 transform: translate(0, -50%);
-                background-color: #fd6500;
+                background-color: #d2405d;
             }
 
             .prevSlide {
                 transform: translate(0, -50%);
-                background-color: #fd6500;
+                background-color: #d2405d;
             }
 
             .slideActiveImg {
-              border-bottom: 2px solid #fd6500;
+              border-bottom: 2px solid #d2405d;
             }
           }
           
@@ -760,8 +796,70 @@ export default {
       */
 
       #ourStaff {
+        .jumboImage {
+          background-image: url("/fable/img/gallery_01.jpg"), url("/fable/img/gallery_02.jpg"), url("/fable/img/gallery_03.jpg");
+          background-repeat: no-repeat;
+          background-size: contain, contain, contain, contain;
+          background-position: left, center, right;
+        }
         .jumboText {
-          background-color: lightcoral;
+            background-image: url("/fable/img/pattern.png");
+
+              .col {
+                height: 5rem;
+                display: flex;
+                align-items: center;
+                color: white;
+
+                p {
+                  margin: 0;
+                  font-size: 1.5rem;
+                  color: white;
+                }
+
+                button {
+                      border: 2px solid white;
+                      color: white;
+                      border-radius: 0;
+                }
+              }
+        }
+
+        .myCard {
+
+              img {
+                height: 80%;
+                object-fit: cover;
+              }
+
+              .description {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+
+                  p {
+                    padding: 2rem;
+                    padding-bottom: 3rem;
+                  }
+
+                  .icons img {
+                     width: 3rem;
+                     margin-right: 0.1rem;
+                  }
+
+                  .icons {
+                    padding: 0 2rem;
+                  }
+
+                  .img img{
+                      margin-top: 1rem;
+                      border: 2px solid var(--mainColor);
+                      padding-left: 4rem;
+                      border-radius: 0;
+                      margin-left: -2rem;
+                  }
+
+              }
         }
       }
       /* 
