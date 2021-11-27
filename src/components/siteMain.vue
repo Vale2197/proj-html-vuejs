@@ -120,20 +120,17 @@
                    -->
                   <div class="col-6">
                     <div class="row g-2">
-                      <div class="col-12 position-relative">
-                          <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
-                          <img class="nextSlide position-absolute top-50 end-0 " src="/fable/img/slider_next.png" alt="#">
-                          <img class="prevSlide position-absolute top-50 start-0 " src="/fable/img/slider_previous.png" alt="#">
-                      </div>
-                      <div class="col-4 pb-2">
-                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
-                      </div>
-                      <div class="slideActiveImg col-4 pb-2">
-                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
-                      </div>
-                      <div class="col-4 pb-2">
-                        <img class="img-fluid" src="/fable/img/gallery_01.jpg" alt="#">
-                      </div>
+
+                          <div class="col-12 position-relative"> 
+                              <img class="img-fluid" :src="slideImgs[active]" alt="#">   
+                              <img  @click="nextSlide()" class="nextSlide position-absolute top-50 end-0 " src="/fable/img/slider_next.png" alt="#">
+                              <img @click="prevSlide()" class="prevSlide position-absolute top-50 start-0 " src="/fable/img/slider_previous.png" alt="#">
+                          </div>
+                      
+                          <div v-for="(img, index) in slideImgs " :key="index" class="col-4 pb-2">
+                            <img class="img-fluid pb-2" :class="index == active ? 'slideActiveImg' : ''" :src="img" alt="#">
+                          </div>
+              
                     </div>
                     <!-- / row -->
                   </div>
@@ -613,13 +610,15 @@
 
 <script>
 import simpleCard from "./simpleCard.vue";
+
 export default {
     components: {
-      simpleCard
+      simpleCard,
     },
 
     data() {
       return {
+          show: false,
           welcomeCards: [
             {
               title: 'Morbi Etos',
@@ -642,7 +641,14 @@ export default {
               img: '/fable/img/bell_alt.png'
             }
           ],
-          
+
+          slideImgs: [
+            '/fable/img/gallery_07-690x506.jpg',
+            '/fable/img/gallery_01-690x506.jpg',
+            '/fable/img/gallery_08-690x506.jpg',
+          ],
+
+          active: 0,
       }
     },
 
@@ -654,9 +660,27 @@ export default {
         else{
           return ' bgOrange'
         }
+      }, 
+      prevSlide() {
+          
+          if(this.active == 0) {
+              this.active = this.slideImgs.length - 1; 
+          }
+          else {
+            this.active--
+          }
+      },
+      
+      nextSlide() {
+            this.active++
+            this.show = true;
+           if(this.active == this.slideImgs.length) {
+              this.active = 0; 
+          }
       }
-    }
-}
+    },
+
+  }
 </script>
 
 <style lang="scss">
@@ -782,6 +806,15 @@ export default {
 
             .slideActiveImg {
               border-bottom: 2px solid #d2405d;
+              animation-name: border-fade;
+              animation-duration: 1.5s;
+
+              @keyframes border-fade {
+                from {
+                  border-bottom: 2px solid rgba(255, 255, 255, 0);
+                }
+                to {border-bottom: 2px solid #d2405d;}
+              }
             }
           }
           
@@ -1069,4 +1102,5 @@ export default {
           }
       }
   }
+
 </style>
