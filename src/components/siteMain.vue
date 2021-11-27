@@ -540,7 +540,10 @@
 
 
     <section id="contactUs">
-        <div class="jumboImage"></div>
+        <div class="jumboImage position-relative mb-5">
+            <img src="/fable/map.png" alt="#">
+            <i class="fas fa-map-marker-alt"></i>
+        </div>
         <!-- / jumbo img -->
 
         <div class="contact">
@@ -1019,6 +1022,28 @@ export default {
           }
 
         }
+      }
+      /* 
+          / NEWS
+      */
+
+      #contactUs {
+          .jumboImage img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+          }
+
+          .jumboImage {
+            i {
+                position: absolute;
+                top: 19%;
+                right: 61%;
+                font-size: 2.2rem;
+                color: #ea4335;
+            }
+          }
       }
   }
 </style>
