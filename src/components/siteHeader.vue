@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header id="header">
       <div class="myContainer">
 
           <div class="row align-items-stretch">
@@ -72,7 +72,7 @@ export default {
 
 <style lang="scss">  
     .myContainer {
-        width: 70%;
+        width: 80%;
         margin: auto;
 
         .logo img{

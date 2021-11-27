@@ -351,7 +351,7 @@
                 <div class="row py-5">
 
                     <div class="col-12 mb-5 text-center">
-                        <h2 class="fs-1 fw-light">
+                        <h2 class="fs-1 fw-light title">
                           Meet Our Staff
                         </h2>
                         <p class="fs-6 descr">
@@ -503,14 +503,14 @@
                         <div class="otherCont d-flex">
                             <div class="col-6">
                                 <p class="fs-6 descr">
-                                  <img src="/fable/img/author.png" alt="#">
+                                  <img class="imgColor" src="/fable/img/author.png" alt="#">
                                   Anna Lorem
                                 </p>
                             </div>
 
                             <div class="col-6">
                                 <p class="fs-6 descr ps-3">
-                                    <img src="/fable/img/category.png" alt="#">
+                                    <img class="imgColor" src="/fable/img/category.png" alt="#">
                                     Events, fun
                                 </p>
                             </div>
@@ -522,7 +522,7 @@
 
                     <div class="col-12 pt-5">
                         <button class="btn bgOrange">
-                            button 
+                            GO TO BLOG 
                             <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                         </button>
                     </div>
@@ -551,7 +551,7 @@
                   <div class="row pb-5">
 
                       <div class="col-12 mb-5 text-center">
-                          <h2 class="fs-1 fw-light">
+                          <h2 class="fs-1 fw-light title">
                             Contact Us
                           </h2>
                           <p class="fs-6 descr">
@@ -660,34 +660,10 @@ export default {
 </script>
 
 <style lang="scss">
-:root {
-  --mainColor: #d2405d;
-}
+
   main {
 
-        .imgColor {
-            filter: hue-rotate(
-            322deg) brightness(0.9);
-        }
-        
-        .title {
-          color:  #56509f;
-        }
-
-      
-        .descr {
-                  color: grey;
-                }
-        
-
-       .bgPurple {
-                       background-color: #56509f ;
-                  }
-
-        .bgOrange {
-          background-color: #d2405d ;
-        }
-
+       
       .jumboImage {
           width: 100%;
           height: 400px;
@@ -814,6 +790,8 @@ export default {
         / welcomeToFable
     */
 
+
+
       #ourClass {
         .jumboImage {
             background-image: url("/fable/img/gallery_07-690x506.jpg");
@@ -897,6 +875,7 @@ export default {
       /* 
           / OUR CLASS
       */
+
 
       #ourStaff {
         .jumboImage {
@@ -1030,6 +1009,7 @@ export default {
                   width: 2rem;
                   height: 2rem;
                   line-height: 2rem;
+                  text-align: center;
                   background-color: var(--mainColor);
                   color: white;
                 }
@@ -1051,6 +1031,7 @@ export default {
       /* 
           / NEWS
       */
+
 
       #contactUs {
           .jumboImage img {

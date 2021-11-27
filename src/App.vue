@@ -37,10 +37,41 @@ export default {
 
 <style lang="scss">
 @import "../node_modules/bootstrap";
+
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --mainColor: #d2405d;
+  }
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* min-width: 1440px; */
+    min-width: 1440px;
+     scroll-behavior: smooth;
+
+        .imgColor {
+            filter: hue-rotate(
+            322deg) brightness(0.9);
+        }
+        
+        .title {
+          color:  #56509f;
+        }
+
+      
+        .descr {
+              color: grey;
+        }
+        
+
+       .bgPurple {
+              background-color: #56509f ;
+        }
+
+        .bgOrange {
+          background-color: #d2405d ;
+        }
   }
 </style>
