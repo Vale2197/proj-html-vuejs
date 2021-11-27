@@ -548,31 +548,56 @@
 
         <div class="contact">
              <div class="myContainer">
-                  <div class="row">
+                  <div class="row pb-5">
 
-                      <div class="title col-12 text-center">
-                          <h2>
-                              CONTACT US
+                      <div class="col-12 mb-5 text-center">
+                          <h2 class="fs-1 fw-light">
+                            Contact Us
                           </h2>
+                          <p class="fs-6 descr">
+                              Lorem ipsum dolor sit.
+                          </p>
+                          <img class="imgColor" src="/fable/img/header_divider.png" alt="#">
                       </div>
                       <!-- / title -->
 
-                      <div class="col-3"> CARDS </div>
-                      <div class="col-3"> CARDS </div>
-                      <div class="col-3"> CARDS </div>
-                      <div class="col-3"> CARDS </div>
-                      <!-- / cards -->
+                      <!-- card -->
+                      <div class="col-3 myCard" v-for="index in 4" :key="index"> 
+                            <div class="text-center mb-3">
+                                <div class="img mb-3 ">
+                                  <img class="imgColor" src="/fable/img/clock.png" alt="#">
+                                </div>
+                                <p class="title fs-5 fw-normal">
+                                    Lorem, ipsum dolor.
+                                </p>
+                                <p class="fs-6 descr">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                </p>
+                            </div>
+                      </div>
+                      <!-- / card -->
 
-                      <div class="userContact col-6">
-                          contact form
+
+                      <div class="row pt-5">
+                          <div class="userContact col-6">
+                              <label for="name" class="position-relative">
+                                  <input class="form-control" type="text" placeholder="Your Name *">
+                                  <img class="position-absolute" src="/fable/img/image.png" alt="#">
+                              </label>
+                              <input class="form-control my-3" type="text" placeholder="Your E-mail *">
+                              <input class="form-control" type="text" placeholder="Subject">
+                          </div>
+                          <!-- / usercontact -->
+
+                          <div class="txtArea col-6">
+                              <textarea class="form-control" style="height: 100%" placeholder="Your Message *"></textarea>
+                          </div>
+                          <!-- / form -->
                       </div>
-                      <div class="txtArea col-6">
-                          text area
-                      </div>
-                      <!-- / form -->
-                      <div class="text-center col-12">
-                          <button>
-                              send
+                      
+                      <div class="text-center col-12 mt-4">
+                          <button class="btn bgOrange">
+                              SEND MESSAGE
                           </button>
                       </div>
                   </div>
@@ -1043,6 +1068,23 @@ export default {
                 font-size: 2.2rem;
                 color: #ea4335;
             }
+          }
+
+          .userContact {
+              label {
+                width: 100%;
+
+                img {
+                  right: 0;
+                  bottom: 0;
+                  padding: 0.6rem;
+                }
+              }
+          }
+
+          button {
+            color: white;
+            border-radius: 0;
           }
       }
   }
