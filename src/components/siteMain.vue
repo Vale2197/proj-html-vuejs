@@ -416,42 +416,114 @@
         / OUR STAFF
      -->
 
-    <section id="news">
+
+
+
+
+    <section id="news" class="py-4">
         <div class="jumboImage">
-            <div class="myContainer">
-                <div class="row text-center">
-                    <div class="col-12">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, soluta.
+
+            <div class="overlay">
+
+                <div class="myContainer">
+
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div class="img mb-4">
+                                <img src="/fable/img/quote_alt.png" alt="#">
+                            </div>
+                            <!-- /quotes  -->
+
+                            <p class="fs-4 fw-light">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi assumenda eaque quisquam harum, obcaecati repellat nihil exercitationem deleniti reprehenderit sit dolores distinctio aliquam placeat impedit nesciunt cumque hic sequi labore.
+                            </p>
+                            <hr style="width: 10%; margin: auto">
+                            <p class="fs-6 fw-bold">
+                                J. Lorem
+                            </p>
+                            <!-- / description -->
+
+                            <div style="width: 100%;" class="slideBars d-flex justify-content-center mt-4">
+                                <div v-for="index in 6" :key="index" class="bar"></div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
+            <!-- / overlay -->
         </div>
-        <!-- / jumbo img -->
+        <!-- 
+          / jumbo img   
+        -->
 
         <div class="whatsNew">
             <div class="myContainer py-5 text-center">
                 <div class="row">
-                    <div class="col-12">
-                        <h2>
-                            TITLE NEWS
+                    <div class="col-12 pb-5">
+                        <h2 class="fs-1 fw-light title">
+                            What's New
                         </h2>
+
+                        <p class="fs-6 descr">
+                          Lorem ipsum dolor sit.
+                        </p>
+
+                        <img class="imgColor" src="/fable/img/header_divider.png" alt="#">
                     </div>
                 </div>
                 <!-- / TITLE -->
-                <div class="row">
-                    <div class="col-4">
-                        cards
+
+                <div class="row g-3 pb-5">
+
+                  <!-- card -->
+                    <div v-for="index in 3" :key="index" class="myCard col-4">
+                        <p class="fs-6 descr">
+                            October 03, 2014
+                        </p>
+                        <div class="img">
+                            <img src="/fable/img/gallery_03.jpg" alt="#">
+                            <p>
+                                42
+                            </p>
+                        </div>
+                        <!-- / img -->
+
+                        <p class="fs-5 title mt-3">
+                            Lorem ipsum dolor sit.
+                        </p>
+
+                        <p class="fs-6 descr">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quam quos similique fugiat, nisi nemo. Vitae, nemo vero. Id corrupti a assumenda eos impedit, consequatur magnam saepe? Quas, qui laudantium.
+                        </p>
+                        <hr>
+
+                        <!-- / description -->
+
+                        <div class="otherCont d-flex">
+                            <div class="col-6">
+                                <p class="fs-6 descr">
+                                  <img src="/fable/img/author.png" alt="#">
+                                  Anna Lorem
+                                </p>
+                            </div>
+
+                            <div class="col-6">
+                                <p class="fs-6 descr ps-3">
+                                    <img src="/fable/img/category.png" alt="#">
+                                    Events, fun
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="col-4">
-                        cards
-                    </div>
-                    <div class="col-4">
-                        cards
-                    </div>
-                    <!-- / cards -->
-                    <div class="col-12">
-                        <button>
-                            button
+                    <!-- / card-->
+
+
+                    <div class="col-12 pt-5">
+                        <button class="btn bgOrange">
+                            button 
+                            <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                         </button>
                     </div>
                 </div>
@@ -463,6 +535,9 @@
     <!-- 
         / NEWS
      -->
+
+
+
 
     <section id="contactUs">
         <div class="jumboImage"></div>
@@ -867,12 +942,82 @@ export default {
       */
 
       #news {
+
+        .jumboImage {
+            background-image: url("/fable/img/gallery_07-690x506.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+          .overlay{
+              background-color: rgba(0, 0, 0, 0.404);
+              height: 100%;
+              color: white;
+
+              .img{
+                  border: 1px solid white;
+                  width: 80px;
+                  margin: auto;
+                  height: 80px;
+                  line-height: 80px;
+                  border-radius: 50%;
+
+                  img {
+                    width: 2rem;
+                  }
+              }
+
+              .slideBars .bar {
+                      width: 2rem;
+                      height: 0.7rem;
+                      border: 1px solid white;
+                      margin-right: 1rem;
+              }
+
+          }
+        }
         .myContainer {
           height: 100%;
           .row {
             height: 100%;
             align-items: center;
           }
+
+          .myCard {
+            text-align: start;
+              .img {
+                position: relative;
+
+                img {
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                }
+
+                p {
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  margin: 0;
+                  width: 2rem;
+                  height: 2rem;
+                  line-height: 2rem;
+                  background-color: var(--mainColor);
+                  color: white;
+                }
+              }
+
+              .otherCont .col-6:first-child {
+                border-right: 1px solid grey;
+                padding-right: 0.2rem;
+              }
+          }
+
+          button {
+            color: white;
+            border-radius: 0;
+          }
+
         }
       }
   }
