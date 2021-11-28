@@ -2,10 +2,13 @@
   <main>
     <section id="welcomeToFable">
         <div class="jumboImage position-relative">
-          <img class="trenino" src="/fable/img/slider_slide3_img2.png" alt="#">
-          <img class="lego" src="/fable/img/slider_slide3_img3.png" alt="#">
+          <img v-if="active == 0" class="trenino" :src="bgs1[active]" alt="#">
+          <img v-else :src="bgs1[active]" class="bgJumboFable" alt="#">
+          <img v-show="active == 0" class="lego" src="/fable/img/slider_slide3_img3.png" alt="#">
+          <!--  -->
           <div class="slideBars">
-              <div class="bar" v-for="index in 3" :key="index"></div>
+              <div @click="changeBg(index)" class="bar" :class="(active == index && index > 0) ? 'activeBar white' : active == index ? 'activeBar' : ''"
+              v-for="(toy, index) in bgs1" :key="index"></div>
           </div>
         </div>
         <!-- /hero image -->
@@ -66,53 +69,64 @@
 
               <div class="row py-3 align-items-center">
                   <div class="col-6">
-                      <button class="btn bgOrange mb-4">
+                      <button @click="show = true" class="btn mb-4" :class="{bgOrange: show, unactive: !show}">
                           Overview
                       </button>
-                      <button class="unactive btn mb-4">
+                      <button @click="show = false" class="btn mb-4" :class="{bgOrange: !show, unactive: show}">
                           Our Mission
                       </button>
-                      <p class="title fs-4 mb-4">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia?
-                      </p>
+                      <!--
+                         / buttons 
+                      -->
                       <!-- / overview title -->
+                      <div v-if="show == true" class="overviewCont">
+                          <p class="title fs-4 mb-4">
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia?
+                          </p>
+                          <div v-for="index in 2" :key="index" class="description d-flex mb-3">
 
-
-                      <div class="description d-flex mb-3">
-
-                          <div class="me-3">
-                            <div class="img rounded-circle bgOrange">
-                                <img src="/fable/img/clock_alt.png" alt="#">
-                            </div>
-                          </div>
-                          
-                          <div class="txt">
-                              <p class="title fs-5 mb-1">
-                                  Full day session
-                              </p>
-                              <p class="fs-6 descr">
-                                  Lorem, ipsum dolor.
-                              </p>
-                          </div>
-                      </div>
-                      <!--  -->
-
-                      <div class="description d-flex">
-                          <div class="me-3">
-                            <div class="img rounded-circle bgOrange">
-                                <img src="/fable/img/diagram_alt.png" alt="#">
-                            </div>
-                          </div>
-                          
-                          <div class="txt">
-                              <p class="fs-5 mb-1 title">
-                                  Full day session
-                              </p>
-                              <p class="descr fs-6">
-                                  Lorem, ipsum dolor.
-                              </p>
+                              <div class="me-3">
+                                <div class="img rounded-circle bgOrange">
+                                    <img src="/fable/img/clock_alt.png" alt="#">
+                                </div>
+                              </div>
+                              
+                              <div class="txt">
+                                  <p class="title fs-5 mb-1">
+                                      Full day session
+                                  </p>
+                                  <p class="fs-6 descr">
+                                      Lorem, ipsum dolor.
+                                  </p>
+                              </div>
                           </div>
                       </div>
+                          <!--  -->
+
+                       <div v-else class="overviewCont">
+                          <p class="title fs-4 mb-4">
+                              Other title Lorem, ipsum dolor.
+                          </p>
+                          <div v-for="index in 2" :key="index" class="description d-flex mb-3">
+
+                              <div class="me-3">
+                                <div class="img rounded-circle bgOrange">
+                                    <img src="/fable/img/diagram_alt.png" alt="#">
+                                </div>
+                              </div>
+                              
+                              <div class="txt">
+                                  <p class="title fs-5 mb-1">
+                                      Something Else
+                                  </p>
+                                  <p class="fs-6 descr">
+                                      Something Else
+                                  </p>
+                              </div>
+                          </div>
+                      </div>
+
+
                     <!-- / DESCRIPTION -->
                   </div>
                   <!-- 
@@ -121,8 +135,8 @@
                   <div class="col-6">
                     <div class="row g-2">
 
-                          <div class="col-12 position-relative"> 
-                              <img class="img-fluid" :src="slideImgs[active]" alt="#">   
+                          <div class="slideImages col-12 position-relative"> 
+                              <img class="img" :src="slideImgs[active]" alt="#">   
                               <img  @click="nextSlide()" class="nextSlide position-absolute top-50 end-0 slideIconHover" src="/fable/img/slider_next.png" alt="#">
                               <img @click="prevSlide()" class="prevSlide position-absolute top-50 start-0 slideIconHover" src="/fable/img/slider_previous.png" alt="#">
                           </div>
@@ -617,7 +631,16 @@ export default {
 
     data() {
       return {
-          show: false,
+          show: true,
+
+          /* jumbo slides welcome */
+            bgs1: [
+              '/fable/img/slider_slide3_img2.png',
+              'https://www.ioamofirenze.it/wp-content/uploads/2013/09/smilinghand.jpg',
+              'https://www.pngitem.com/pimgs/m/74-743340_kids-hands-png-child-development-transparent-png.png'
+            ],
+          /* / jumbo slides welcome */
+
           welcomeCards: [
             {
               title: 'Morbi Etos',
@@ -843,18 +866,28 @@ export default {
       },
       
       nextSlide() {
-            this.active++
-            this.show = true;
+            this.active++          
            if(this.active == this.slideImgs.length) {
               this.active = 0; 
           }
+      },
+    changeBg(index) {
+        this.active = index;
       }
     },
-
   }
 </script>
 
 <style lang="scss">
+button:focus {
+  box-shadow: 2px 2px 2px #9c253d!important;
+}
+.bgJumboFable {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 .purpleBtn {
                       &:hover {
                         background-color: white;
@@ -881,6 +914,14 @@ export default {
   .slideIconHover {
       &:hover {
         border: 1px solid white;
+      }
+  }
+
+  .activeBar {
+      position: relative;
+      bottom: 1rem;
+      &.white {
+        border: 2px solid white!important;
       }
   }
 
@@ -915,18 +956,22 @@ export default {
               }
               
               .trenino {
-                  position: absolute;
-                  bottom: 3rem;
-                  left: 50%;
-                  transform: translate(-50%, 0);
-                  width: 200px;
+                    position: absolute;
+                    bottom: 4rem;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    width: 200px;
+                    height: 100px;
+                    object-fit: contain;
               }
 
               .lego {
                 position: absolute;
                 left: 80%;
                 bottom: 3rem;
-                width: 150px;
+                 width: 100px;
+                height: 100px;
+                object-fit: contain;
               }
           }
 
@@ -1014,6 +1059,16 @@ export default {
                 transform: translate(0, -50%);
                 background-color: #d2405d;
                 cursor: pointer;
+            }
+
+            .slideImages {
+              .img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+              }
+
             }
 
             .slideActiveImg {
