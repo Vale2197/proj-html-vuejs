@@ -215,11 +215,11 @@
 
                   <!-- card -->
                   <div class="row g-3 pt-4">
-                      <div v-for="index in 4" :key="index" class="col-6 d-flex">
+                      <div v-for="(card, index) in ourClassCards" :key="index" class="col-6 d-flex">
                           <div class="myCard col-6 d-flex flex-wrap ">
                               <div class="pt-3 ps-3 col-12 mb-5">
                                   <p class="fs-4">
-                                     Little Lambs
+                                     {{card.title}}
                                   </p>
                                   <p class="fs-6 fw-light">
                                     Class Name
@@ -229,17 +229,17 @@
 
                               <div class=" yearsCol col-6 mb-2 text-center">
                                   <p class="fs-5">
-                                     12-24
+                                     {{card.numbers}}
                                   </p>
                                   <p class="fs-6 fw-light">
-                                      Month old
+                                      {{card.monthYears}}
                                   </p>
                               </div>
                               <!-- / years -->
 
                               <div class="col-6 mb-2 text-center ">
                                  <p class="fs-5">
-                                     9
+                                     {{card.classSize}}
                                   </p>
                                   <p class="fs-6 fw-light">
                                       Class size
@@ -249,7 +249,7 @@
                           </div>
 
                           <div class="col-6 position-relative">
-                              <img src="/fable/img/gallery_04.jpg" alt="#">
+                              <img :src="card.img" alt="#">
                               <button class="btn position-absolute bottom-0 end-0 bgOrange d-flex align-items-center">
                                   READ MORE
                                   <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
@@ -288,12 +288,12 @@
                 <div class="col-6">
 
                     <div class="icons row">
-                        <div class="col-6 text-center mb-3" v-for="index in 4" :key="index">
+                        <div class="col-6 text-center mb-3" v-for="(card,index) in aboutUsimgs" :key="index">
                               <div class="img imgColor mb-3 position-relative">
-                                <img class="position-absolute top-50 start-50 translate-middle" src="/fable/img/toy.png" alt="#">
+                                <img class="position-absolute top-50 start-50 translate-middle" :src="card.img" alt="#">
                               </div>
                               <p class="title fs-5 fw-normal">
-                                  Lorem, ipsum dolor.
+                                  {{card.title}}
                               </p>
                               <p class="fs-6 descr">
                                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -377,14 +377,14 @@
                 <div class="row py-4 g-4">
 
                   <!-- card -->
-                    <div v-for="index in 4" :key="index" class="myCard col-6 d-flex">
+                    <div v-for="(teacher, index) in teachers" :key="index" class="myCard col-6 d-flex">
                         <div class="col-6 text-center">
-                            <img class="img-fluid" src="/fable/img/gallery_08-690x506.jpg" alt="#">
+                            <img class="img-fluid" :src="teacher.img" alt="#">
                             <p class="fs-5 title m-0 mt-3">
-                                Name T.
+                                {{teacher.name}}
                             </p>
                             <p class="fs-6 descr">
-                                teacher
+                                {{teacher.job}}
                             </p>
                         </div>
                         <!-- /teacher name -->
@@ -394,12 +394,10 @@
                                 <img class="imgColor btn" src="/fable/img/quote.png" alt="#">
                             </div>
                             <p class="fs-6 descr">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo accusantium veniam nesciunt hic, sit molestiae?
+                                {{teacher.descr}}
                             </p>
                             <div class="icons">
-                                <img class="bgOrange" src="/fable/img/mail.png" alt="#">
-                                <img class="bgOrange" src="/fable/img/facebook.png" alt="#">
-                                <img class="bgOrange" src="/fable/img/pinterest.png" alt="#">
+                                <img v-for="icon in teacher.icons" :key="icon" class="bgOrange" :src="icon" alt="#">
                             </div>
                         </div>
                     </div>
@@ -474,20 +472,20 @@
                 <div class="row g-3 pb-5">
 
                   <!-- card -->
-                    <div v-for="index in 3" :key="index" class="myCard col-4">
+                    <div v-for="( card, index) in newsCard" :key="index" class="myCard col-4">
                         <p class="fs-6 descr">
-                            October 03, 2014
+                            {{card.date}}
                         </p>
                         <div class="img">
-                            <img src="/fable/img/gallery_03.jpg" alt="#">
+                            <img :src="card.img" alt="#">
                             <p>
-                                42
+                                {{card.number}}
                             </p>
                         </div>
                         <!-- / img -->
 
                         <p class="fs-5 title mt-3">
-                            Lorem ipsum dolor sit.
+                            {{card.title}}
                         </p>
 
                         <p class="fs-6 descr">
@@ -501,14 +499,14 @@
                             <div class="col-6">
                                 <p class="fs-6 descr">
                                   <img class="imgColor" src="/fable/img/author.png" alt="#">
-                                  Anna Lorem
+                                  Anna Brown
                                 </p>
                             </div>
 
                             <div class="col-6">
                                 <p class="fs-6 descr ps-3">
                                     <img class="imgColor" src="/fable/img/category.png" alt="#">
-                                    Events, fun
+                                    {{card.events}}
                                 </p>
                             </div>
                         </div>
@@ -559,16 +557,17 @@
                       <!-- / title -->
 
                       <!-- card -->
-                      <div class="col-3 myCard" v-for="index in 4" :key="index"> 
+                      <div class="col-3 myCard" v-for="(card, index) in contactUsCards" :key="index"> 
                             <div class="text-center mb-3">
                                 <div class="img mb-3 ">
-                                  <img class="imgColor" src="/fable/img/clock.png" alt="#">
+                                  <img class="imgColor" :src="card.img" alt="#">
                                 </div>
                                 <p class="title fs-5 fw-normal">
-                                    Lorem, ipsum dolor.
+                                    {{card.title}}
                                 </p>
                                 <p class="fs-6 descr">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                    {{card.descr}}
+                                    <a href="#"> {{card.mail}} </a>
                                 </p>
                             </div>
                       </div>
@@ -649,6 +648,178 @@ export default {
           ],
 
           active: 0,
+
+          /* 
+              OUR CLASS
+          */
+
+          ourClassCards: [
+            {
+              title: 'Little Lambs',
+              img: '/fable/img/gallery_04.jpg',
+              numbers: '12-24',
+              monthYears: 'Month Old',
+              classSize: '9'
+            },
+            {
+              title: 'Bouncy Bears',
+              img: '/fable/img/class_02-690x506.jpg',
+              numbers: '2-3',
+              monthYears: 'Year old',
+              classSize: '12'
+            },
+            {
+              title: 'TenderHearts',
+              img: '/fable/img/class_03-690x506.jpg',
+              numbers: '3-4',
+              monthYears: 'Year olds',
+              classSize: '15'
+            },
+            {
+              title: 'Shining Stars',
+              img: '/fable/img/class_04-690x506.jpg',
+              numbers: '4-5',
+              monthYears: 'Year olds',
+              classSize: '20'
+            }
+          ],
+
+          aboutUsimgs: [
+            {
+              title: 'Learning & Fun',
+              img: '/fable/img/toy.png',
+            },
+            {
+              title: 'Healthy Meals',
+              img: '/fable/img/meal.png',
+            },
+            {
+              title: 'Friendly Place',
+              img: '/fable/img/school.png',
+            },
+            {
+              title: 'Children Safety',
+              img: '/fable/img/shield.png',
+            },
+          ],
+
+          /* 
+              OUR STAFF
+          */
+
+         teachers: [
+           {
+             name: 'Ruth Richie',
+             job: 'Teacher',
+             descr: 'I have just finished my studies in Early Childhood education, and i am also the kids yoga teacher here at Fable. I enjoy     cooking, swimming and bike riding in my free time',
+             icons: [
+               '/fable/img/mail.png',
+               '/fable/img/facebook.png',
+               '/fable/img/pinterest.png',
+             ],
+             img: '/fable/img/gallery_08-690x506.jpg'
+           },
+           {
+             name: 'Katie Willmore',
+             job: 'Assistant Teacher',
+             descr: 'My name is Katie, i grew up and studied in Canada, this is my second year at Fable and love every minute of it, making the childrens learning experience fun.',
+             icons: [
+               '/fable/img/dribbble.png',
+               '/fable/img/stumbleupon.png',
+               '/fable/img/instagram.png',
+             ],
+             img: '/fable/img/team_03.jpg'
+           },
+           {
+             name: 'Angelica Watson',
+             job: 'Lead Teacher',
+             descr: 'I hold a degree in Early Child education and an advanced English language certificate. i have been working as a kindergarten teacher since 2002',
+             icons: [
+               '/fable/img/bing.png',
+               '/fable/img/skype.png',
+               '/fable/img/linkedin.png',
+             ],
+             img: '/fable/img/team_02.jpg'
+           },
+           {
+             name: 'Angela Lynn ',
+             job: 'Teacher',
+             descr: 'I have complete a graduate diploma in Early Childhood teaching. I have worked with children aged from six weeks to eight years. this is my second year at Fable',
+             icons: [
+               '/fable/img/youtube.png',
+               '/fable/img/twitter.png',
+               '/fable/img/googleplus.png',
+             ],
+             img: '/fable/img/team_01.jpg'
+           }
+         ],
+
+         /* 
+            WHAT'S NEW CARDS
+         */
+
+          newsCard: [
+            {
+              date: 'October 03, 2014',
+              img: '/fable/img/gallery_03.jpg',
+              title:  'Drawing and Painting Lessons',
+              events: 'Events, Fun',
+              number: 42,
+            },
+            {
+              date: 'October 03, 2014',
+              img: '/fable/img/class_04-690x506.jpg',
+              title:  'Fall Parents Meeting Day',
+              events: 'Dance, Education',
+              number: 19,
+            },
+            {
+              date: 'September 20, 2014',
+              img: '/fable/img/blog_08-525x315.jpg',
+              title:  'Birthday in Kindergarten',
+              events: 'Games, General',
+              number: 22,
+            },
+          ],
+
+          /* 
+            contact us cards
+          */
+
+         contactUsCards: [
+           {
+             title: 'Postal Address',
+             img: '/fable/img/envelope (1).png',
+             descr: `Fable Care Center 
+                      85 Fentiman Ave 
+                      Ottawa, ON K1S OT7`,
+            mail: '',
+           },
+           {
+             title: 'Phone & E-mail',
+             img: '/fable/img/mobile.png',
+             descr: `Phone: 1-800-64-38 
+                      Fax: 1-800-64-39 
+                     `,
+            mail: 'office@fable.com',
+           },
+           {
+             title: 'Business Hours',
+             img: '/fable/img/clock.png',
+             descr: `Monday - Friday 
+                      8.00 am - 5.00 pm 
+                      Weekend Closed`,
+            mail: '',
+           },
+           {
+             title: 'Sessions',
+             img: '/fable/img/document (1).png',
+             descr: `Mornings, 8 am - 12 noon
+                      Afternoons, 1 pm - 5 pm
+                      Full Day, 8 am - 5 pm`,
+            mail: '',
+           },
+         ]
       }
     },
 
@@ -797,11 +968,13 @@ export default {
             .nextSlide {
                 transform: translate(0, -50%);
                 background-color: #d2405d;
+                cursor: pointer;
             }
 
             .prevSlide {
                 transform: translate(0, -50%);
                 background-color: #d2405d;
+                cursor: pointer;
             }
 
             .slideActiveImg {

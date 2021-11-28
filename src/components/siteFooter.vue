@@ -59,18 +59,18 @@
                       </h2>
                       <hr class="mb-4" style="border: 1px solid white; width: 30%; opacity: 1;">
                       
-                      <div v-for="index in 3" :key="index" class="col-12 d-flex align-items-center">
+                      <div v-for="(card, index) in footerCard" :key="index" class="cardFooter col-12 d-flex align-items-center">
                           <div class="col-6">
-                              <img style="width:100%" src="/fable/img/gallery_03.jpg" alt="#">
+                              <img class="img" :src="card.img" alt="#">
                           </div>
                           <div class="col-6 p-2">
                               <p class="fs-5">
-                                  drawing and painting lessons
+                                  {{card.title}}
                               </p>
 
                               <p class="fs-6 fw-light">
                                   <img class="me-2" src="/fable/img/date_footer.png" alt="#">
-                                  october 02 2014
+                                  {{card.date}}
                               </p>
                           </div>
                       </div>
@@ -83,7 +83,7 @@
     <div class="myContainer">
         <div class="row pt-5 justify-content-center">
               <div class="text-center pb-3">
-                 <img v-for="index in 5" :key="index" class="bgOrange me-1" src="/fable/img/facebook.png" alt="#">
+                 <img v-for="(icon, index) in footerIcons" :key="index" class="bgOrange me-1" :src="icon" alt="#">
               </div>
               <div>
                   <p class="fs-6 descr text-center">
@@ -101,7 +101,35 @@
 
 <script>
 export default {
+    data() {
+      return {
+        footerCard: [
+          {
+            img: '/fable/img/gallery_03.jpg',
+            title: 'Drawing and Painting Lessons',
+            date: 'October 03, 2014',
+          },
+          {
+            img: '/fable/img/blog_10-300x180.jpg',
+            title: 'Fall Parents and Meeting Day',
+            date: 'October 03, 2014',
+          },
+          {
+            img: '/fable/img/blog_08-300x180.jpg',
+            title: 'Birthday in Kindergarten',
+            date: 'September 20, 2014',
+          },
+        ],
 
+        footerIcons: [
+          '/fable/img/behance.png',
+          '/fable/img/dribbble.png',
+          '/fable/img/envato.png',
+          '/fable/img/facebook.png',
+          '/fable/img/twitter.png',
+        ]
+      }
+    }
 }
 </script>
 
@@ -136,6 +164,12 @@ export default {
         p {
           line-height: 1.1;
           margin-bottom: 0.4rem;
+        }
+
+        .cardFooter .img {
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
         }
       }
     }
