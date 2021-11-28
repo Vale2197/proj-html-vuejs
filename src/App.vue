@@ -43,6 +43,7 @@ html {
 }
 :root {
   --mainColor: #d2405d;
+  --titleColor: #56509f;
   }
   body {
     margin: 0;

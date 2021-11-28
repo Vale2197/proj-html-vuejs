@@ -21,8 +21,8 @@
                 </div>
 
                 <div class="col justify-content-end">
-                    <button class="btn">
-                        learn more <img style="width: 2rem" src="/fable/img/slider_next.png" alt="">
+                    <button class="btn purpleBtn">
+                        learn more <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                     </button>
                 </div>
                
@@ -123,8 +123,8 @@
 
                           <div class="col-12 position-relative"> 
                               <img class="img-fluid" :src="slideImgs[active]" alt="#">   
-                              <img  @click="nextSlide()" class="nextSlide position-absolute top-50 end-0 " src="/fable/img/slider_next.png" alt="#">
-                              <img @click="prevSlide()" class="prevSlide position-absolute top-50 start-0 " src="/fable/img/slider_previous.png" alt="#">
+                              <img  @click="nextSlide()" class="nextSlide position-absolute top-50 end-0 slideIconHover" src="/fable/img/slider_next.png" alt="#">
+                              <img @click="prevSlide()" class="prevSlide position-absolute top-50 start-0 slideIconHover" src="/fable/img/slider_previous.png" alt="#">
                           </div>
                       
                           <div v-for="(img, index) in slideImgs " :key="index" class="col-4 pb-2">
@@ -250,7 +250,7 @@
 
                           <div class="col-6 position-relative">
                               <img :src="card.img" alt="#">
-                              <button class="btn position-absolute bottom-0 end-0 bgOrange d-flex align-items-center">
+                              <button class="btn position-absolute bottom-0 end-0 bgOrange d-flex align-items-center normalBtn">
                                   READ MORE
                                   <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                               </button>
@@ -332,7 +332,7 @@
                     </div>
 
                     <div class="col justify-content-end">
-                        <button class="btn">
+                        <button class="btn purpleBtn">
                             View Gallery <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                         </button>
                     </div>
@@ -516,7 +516,7 @@
 
 
                     <div class="col-12 pt-5">
-                        <button class="btn bgOrange">
+                        <button class="btn bgOrange normalBtn">
                             GO TO BLOG 
                             <img style="width: 2rem" src="/fable/img/slider_next.png" alt="#">
                         </button>
@@ -592,7 +592,7 @@
                       </div>
                       
                       <div class="text-center col-12 mt-4">
-                          <button class="btn bgOrange">
+                          <button class="btn bgOrange normalBtn">
                               SEND MESSAGE
                           </button>
                       </div>
@@ -855,6 +855,36 @@ export default {
 </script>
 
 <style lang="scss">
+.purpleBtn {
+                      &:hover {
+                        background-color: white;
+                        color: var(--titleColor)!important;
+                      }
+                      &:hover img {
+                            filter: brightness(0.7) hue-rotate(
+                            234deg) saturate(9) contrast(0.5);
+                      }
+            }
+
+  .normalBtn {
+     &:hover {
+      background-color: white;
+      color: var(--titleColor)!important;
+      border: 1px solid var(--titleColor);
+    }
+    &:hover img {
+          filter: brightness(0.7) hue-rotate(
+          234deg) saturate(9) contrast(0.5);
+    }
+  } 
+
+  .slideIconHover {
+      &:hover {
+        border: 1px solid white;
+      }
+  }
+
+
 
   main {
 
@@ -921,6 +951,15 @@ export default {
                       border: 2px solid white;
                       color: white;
                       border-radius: 0;
+
+                      &:hover {
+                        background-color: white;
+                        color: var(--titleColor);
+                      }
+                      &:hover img {
+                            filter: brightness(0.7) hue-rotate(
+                            234deg) saturate(9) contrast(0.5);
+                      }
                 }
               }
           }
