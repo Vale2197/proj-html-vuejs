@@ -431,7 +431,7 @@
 
 
     <section id="news" class="py-4">
-        <div class="jumboImage">
+        <div class="jumboImage" :style="`background-image: url(${newsSlides[active2]})`">
 
             <div class="overlay">
 
@@ -454,7 +454,8 @@
                             <!-- / description -->
 
                             <div style="width: 100%;" class="slideBars d-flex justify-content-center mt-4">
-                                <div v-for="index in 6" :key="index" class="bar"></div>
+                                <div @click="active2 = index" v-for="(img, index) in newsSlides" :key="index" class="bar"
+                                    :class="index == active2 ? 'activeBar' : ''"></div>
                             </div>
                         </div>
                     </div>
@@ -651,7 +652,6 @@ export default {
             'https://st3.depositphotos.com/1394201/i/600/depositphotos_348225444-stock-photo-nursery-children-playing-with-teacher.jpg',
             'https://thumbs.dreamstime.com/b/children-kids-diversity-friendship-happiness-cheerful-concept-56679027.jpg',
           ],
-
           ourclassCircle: [
             {
               num: 507,
@@ -673,7 +673,14 @@ export default {
           /* / jumbo slide in our class */
 
           /* whats new jumbo slides */
-
+            newsSlides: [
+              'https://www.cscbroward.org/sites/default/files/styles/blog_/public/2019-08/All%20Children%20Develop%20at%20their%20Own%20Pace.JPG?h=33334fe2&itok=adHi3i7m',
+              'https://blog.cincinnatichildrens.org/cms/wp-content/uploads/2015/07/group-of-young-children-hanging-out-in-park-picture-id495354633.jpg',
+              'https://images.squarespace-cdn.com/content/v1/5d2334330f1dd60001f27534/1571427449709-GFPF8JEOC4FKSR81RLTS/iStock-539214603.jpg?format=2500w',
+              'https://i2-prod.mirror.co.uk/incoming/article24781573.ece/ALTERNATES/n615/0_175391342.jpg',
+              'https://www.hants.gov.uk/-/media/Images/socialcareandhealth/children-and-families/early-years/work-in-childcare-500.jpg',
+              'https://www.wallpapertip.com/wmimgs/17-178069_children-love-hug-wallpaper-cute-child-couple-wallpapers.jpg',
+            ],
           /* / whats new jumbo slides */
 
           welcomeCards: [
@@ -1296,10 +1303,10 @@ button:focus {
       #news {
 
         .jumboImage {
-            background-image: url("/fable/img/gallery_07-690x506.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
+            height: 500px;
 
           .overlay{
               background-color: rgba(0, 0, 0, 0.404);
