@@ -166,21 +166,21 @@
 
     <section id="ourClass">
 
-      <div class="jumboImage">
+      <div class="jumboImage" :style="`background-image: url(${ourclassBgs[active2]})`">
         <div class="overlay">
           <div class="myContainer">
               <div class="row">
                 <!-- cerchi -->
-                  <div v-for="index in 4" :key="index" class="col-3 text-center">
+                  <div v-for="(circle, index) in ourclassCircle" :key="index" class="col-3 text-center">
                       <div class="img imgColor mb-2">
                           <span class="fs-1 fw-light">
-                              500
+                              {{circle.num}}
                           </span>
                       </div>
 
                       <div class="txt">
                           <p class="fs-4">
-                              Lorem, ipsum.
+                              {{circle.title}}
                           </p>
                           <p class="fs-6">
                               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -189,7 +189,8 @@
                   </div>
                   <!-- / cerchio -->
                   <div class="col-12 d-flex justify-content-center">
-                      <div v-for="index in 6" :key="index" class="slideBars">
+                      <div @click="active2 = index" v-for="(img, index) in ourclassBgs" :key="index" 
+                      class="slideBars" :class="index == active2 ? 'activeBar' : ''">
                       </div>
                   </div>
               </div>
@@ -393,7 +394,7 @@
                   <!-- card -->
                     <div v-for="(teacher, index) in teachers" :key="index" class="myCard col-6 d-flex">
                         <div class="col-6 text-center">
-                            <img class="img-fluid" :src="teacher.img" alt="#">
+                            <img class="teacherImg img-fluid" :src="teacher.img" alt="#">
                             <p class="fs-5 title m-0 mt-3">
                                 {{teacher.name}}
                             </p>
@@ -641,6 +642,40 @@ export default {
             ],
           /* / jumbo slides welcome */
 
+          /* jumbo slide in our class */
+          ourclassBgs: [
+            '/fable/img/gallery_07-690x506.jpg',
+            'https://www.sheknows.com/wp-content/uploads/2018/08/preschoolers-600_rnnjrt.jpeg',
+            'https://www.westend61.de/images/0000035341pw/children-4-7-in-class-room-holding-school-cones-WESTF04571.jpg',
+            'https://www.rd.com/wp-content/uploads/2016/04/33-your-childs-teacher-happy-kids-classroom.jpg',
+            'https://st3.depositphotos.com/1394201/i/600/depositphotos_348225444-stock-photo-nursery-children-playing-with-teacher.jpg',
+            'https://thumbs.dreamstime.com/b/children-kids-diversity-friendship-happiness-cheerful-concept-56679027.jpg',
+          ],
+
+          ourclassCircle: [
+            {
+              num: 507,
+              title: 'Our Pupils',
+            },
+            {
+              num: 235,
+              title: 'Teaching Hours',
+            },
+            {
+              num: '100%',
+              title: 'Satisfied Parents',
+            },
+            {
+              num: 1050,
+              title: 'Meals per Year',
+            },
+          ],
+          /* / jumbo slide in our class */
+
+          /* whats new jumbo slides */
+
+          /* / whats new jumbo slides */
+
           welcomeCards: [
             {
               title: 'Morbi Etos',
@@ -671,6 +706,7 @@ export default {
           ],
 
           active: 0,
+          active2: 0,
 
           /* 
               OUR CLASS
@@ -873,7 +909,7 @@ export default {
       },
     changeBg(index) {
         this.active = index;
-      }
+      },
     },
   }
 </script>
@@ -1102,7 +1138,7 @@ button:focus {
 
             .overlay {
                   height: 100%;
-                  background-color: #00000080;
+                  background-color: #0000003d;
                   color: white;
 
                   .img span {
@@ -1208,6 +1244,15 @@ button:focus {
         }
 
         .myCard {
+              
+              transition: 0.5s;
+
+              &:hover {
+                background-color: #f5f5f5;
+                padding-left: 0;
+                box-shadow: 2px 2px 5px grey;
+                border-radius: 1rem;
+              }
 
               img {
                 height: 80%;
