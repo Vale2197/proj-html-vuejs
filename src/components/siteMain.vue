@@ -970,7 +970,7 @@ export default {
             if(this.active2 == 6) {
               this.active2 = 0
             }
-        }, 3000);
+        }, 5000);
     }
   }
 </script>
