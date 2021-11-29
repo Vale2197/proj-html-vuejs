@@ -73,41 +73,43 @@
 
               <div class="row py-3 align-items-center">
                   <div class="col-6">
-                      <button @click="show = true" class="btn mb-4" :class="{bgOrange: show, unactive: !show}">
-                          Overview
-                      </button>
-                      <button @click="show = false" class="btn mb-4" :class="{bgOrange: !show, unactive: show}">
-                          Our Mission
-                      </button>
+                        <button @click="show = true" class="btn mb-4" :class="{bgOrange: show, unactive: !show}">
+                            Overview
+                        </button>
+                        <button @click="show = false" class="btn mb-4" :class="{bgOrange: !show, unactive: show}">
+                            Our Mission
+                        </button>
                       <!--
                          / buttons 
                       -->
                       <!-- / overview title -->
-                      <div v-if="show == true" class="overviewCont">
-                          <p class="title fs-4 mb-4">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia?
-                          </p>
-                          <div v-for="index in 2" :key="index" class="description d-flex mb-3">
+                        <transition name="txt">
+                          <div v-if="show == true" class="overviewCont" key="overview">
+                              <p class="title fs-4 mb-4">
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, officia?
+                              </p>
+                              <div v-for="index in 2" :key="index" class="description d-flex mb-3">
 
-                              <div class="me-3">
-                                <div class="img rounded-circle bgOrange">
-                                    <img src="/fable/img/clock_alt.png" alt="#">
-                                </div>
-                              </div>
-                              
-                              <div class="txt">
-                                  <p class="title fs-5 mb-1">
-                                      Full day session
-                                  </p>
-                                  <p class="fs-6 descr">
-                                      Lorem, ipsum dolor.
-                                  </p>
+                                  <div class="me-3">
+                                    <div class="img rounded-circle bgOrange">
+                                        <img src="/fable/img/clock_alt.png" alt="#">
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="txt">
+                                      <p class="title fs-5 mb-1">
+                                          Full day session
+                                      </p>
+                                      <p class="fs-6 descr">
+                                          Lorem, ipsum dolor.
+                                      </p>
+                                  </div>
                               </div>
                           </div>
-                      </div>
+                        
                           <!--  -->
 
-                       <div v-else class="overviewCont">
+                        <div v-else class="overviewCont" key="ourMiss">
                           <p class="title fs-4 mb-4">
                               Other title Lorem, ipsum dolor.
                           </p>
@@ -128,8 +130,8 @@
                                   </p>
                               </div>
                           </div>
-                      </div>
-
+                        </div>
+                      </transition>
 
                     <!-- / DESCRIPTION -->
                   </div>
@@ -450,27 +452,29 @@
 
                 <div class="myContainer">
 
-                    <div class="row text-center">
-                        <div class="col-12">
-                            <div class="img mb-4">
-                                <img src="/fable/img/quote_alt.png" alt="#">
-                            </div>
-                            <!-- /quotes  -->
+                    <div class="row text-center position-relative">
+                        <transition-group name="rev-fade">
+                            <div v-show="index == active2" class="col-12 rev-fade-item" v-for="(rev, index) in newsReviews" :key="index">
+                                <div class="img mb-4">
+                                    <img src="/fable/img/quote_alt.png" alt="#">
+                                </div>
+                                <!-- /quotes  -->
 
-                            <p class="fs-4 fw-light">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi assumenda eaque quisquam harum, obcaecati repellat nihil exercitationem deleniti reprehenderit sit dolores distinctio aliquam placeat impedit nesciunt cumque hic sequi labore.
-                            </p>
-                            <hr style="width: 10%; margin: auto">
-                            <p class="fs-6 fw-bold">
-                                J. Lorem
-                            </p>
-                            <!-- / description -->
+                                <p class="fs-4 fw-light">
+                                    {{rev.review}}
+                                </p>
+                                <hr style="width: 10%; margin: auto">
+                                <p class="fs-6 fw-bold">
+                                    {{rev.name}}
+                                </p>
+                                <!-- / description -->
 
-                            <div style="width: 100%;" class="slideBars d-flex justify-content-center mt-4">
-                                <div @click="active2 = index" v-for="(img, index) in newsSlides" :key="index" class="bar"
-                                    :class="index == active2 ? 'activeBar' : ''"></div>
+                                <div style="width: 100%;" class="slideBars d-flex justify-content-center mt-4">
+                                    <div @click="active2 = index" v-for="(img, index) in newsSlides" :key="index" class="bar"
+                                        :class="index == active2 ? 'activeBar' : ''"></div>
+                                </div>
                             </div>
-                        </div>
+                        </transition-group>
                     </div>
 
                 </div>
@@ -687,10 +691,10 @@ export default {
 
           /* whats new jumbo slides */
             newsSlides: [
-              'https://www.cscbroward.org/sites/default/files/styles/blog_/public/2019-08/All%20Children%20Develop%20at%20their%20Own%20Pace.JPG?h=33334fe2&itok=adHi3i7m',
-              'https://blog.cincinnatichildrens.org/cms/wp-content/uploads/2015/07/group-of-young-children-hanging-out-in-park-picture-id495354633.jpg',
+              'https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/10/happy-boy-with-painted-hands-1296x728-header.jpg?w=1155&h=1528',
+              'https://www.verywellfamily.com/thmb/INJTjLfp7xsyUffyae9gZGU2Fds=/500x350/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-168318604-56c7e3cf5f9b5879cc42b307.jpg',
               'https://images.squarespace-cdn.com/content/v1/5d2334330f1dd60001f27534/1571427449709-GFPF8JEOC4FKSR81RLTS/iStock-539214603.jpg?format=2500w',
-              'https://i2-prod.mirror.co.uk/incoming/article24781573.ece/ALTERNATES/n615/0_175391342.jpg',
+              'https://www.nurseryworld.co.uk/media/88227/prdrawing1.jpg?&width=780&quality=60',
               'https://www.hants.gov.uk/-/media/Images/socialcareandhealth/children-and-families/early-years/work-in-childcare-500.jpg',
               'https://www.wallpapertip.com/wmimgs/17-178069_children-love-hug-wallpaper-cute-child-couple-wallpapers.jpg',
             ],
@@ -861,6 +865,33 @@ export default {
             },
           ],
 
+          newsReviews: [
+            {
+              name: 'Pamela B.',
+              review: 'MY daughter came from another nursery in May 2017 and from day one she fell in love with everyone. We noticed how quickly she started learning with her new teachers (songs, numeracy, dance, language). Excellent work guys. Thank you.',
+            },
+            {
+              name: 'Jim A.',
+              review: 'Our little boy joined the nursery at five months old, attending just two afternoons per week, to begin with. He absolutely loves his Fable family ',
+            },
+            {
+              name: 'Angela L.',
+              review: "Fabolous newly refurbished building with excellent facilities. Staff are approachable and treat children as individuals, the team in the baby room have gone out of their way to accommodate my daughter's allergies.",
+            },
+            {
+              name: 'Michael S.',
+              review: ' Great facilities, lovely location and dedicated staff. Both our children had a wonderful time at Fable, learning, having fun and being outdoors.',
+            },
+            {
+              name: 'Karen F.',
+              review: 'I couldn’t be happier with Fable. The staff are so kind and caring, they all know my daughter even those in different rooms. She skips in to see them every day and they are as excited as me when she does new things. It’s a home away from home',
+            },
+            {
+              name: 'Amy B.',
+              review: 'We are pleased with the level of care our children are experiencing at Fable. They are happy and enjoying their time at the nursery. They have plenty of learning opportunities through play. The environment is safe and staff are friendly and caring',
+            },
+          ],
+
           /* 
             contact us cards
           */
@@ -931,6 +962,16 @@ export default {
         this.active = index;
       },
     },
+    mounted() {
+      setInterval(() => {
+            this.nextSlide()
+
+            this.active2++
+            if(this.active2 == 6) {
+              this.active2 = 0
+            }
+        }, 3000);
+    }
   }
 </script>
 
@@ -950,7 +991,7 @@ button:focus {
 }
 
 .try-item {
-  transition: all 1.5s;
+  transition: all 2s;
   position: absolute;
 }
 .try-enter, .try-leave-to
@@ -961,9 +1002,42 @@ button:focus {
 }
 .try-leave-active {
   opacity: 0;
+  transition: 1s;
   /* position: absolute; */
 }
 /* / slides transition 1 */
+
+.txt-enter-active, .txt-leave-active {
+  transition: opacity 1.5s;
+}
+.txt-enter, .txt-leave-to {
+  opacity: 0;
+   position: absolute;
+   transition: 0s;
+}
+
+/* / txt transition (overview, WELCOME TO FABLE) */
+
+
+/* transition rev-fade news section */
+ .rev-fade-item {
+  transition: all 2s;
+}
+.rev-fade-enter, .rev-fade-leave-to
+/* .rev-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  filter: brightness(1.3);
+  transition: 0s;
+}
+.rev-fade-leave-active {
+  transition: opacity 1s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* transition rev-fade news section */
+
 
 .bgJumboFable {
     width: 100%;
@@ -1130,6 +1204,10 @@ button:focus {
                 width: 1.5rem;
               }
             }
+
+            .overviewCont {
+              height: 350px;
+            }
             
             /* / OVERVIEW TEXT */
             .nextSlide {
@@ -1221,18 +1299,24 @@ button:focus {
               margin: 0;
             }
 
-           
-            .cardCont:hover .myCard, .cardCont:hover .imageCol{
-                box-shadow: 6px 4px 5px grey;
-            }
+           .cardCont {
+             transition: 0.3s;
+             border-bottom-left-radius: 1rem;
+               border-top-left-radius: 1rem;
+
+             &:hover {
+               padding: 0;
+               box-shadow: 4px 6px 5px grey;
+               
+             }
+           }
            
             .myCard {
               background-color: #56509f;
               color: white;
               border-bottom-left-radius: 1rem;
               border-top-left-radius: 1rem;
-              transition: 0.3s;
-              
+      
               .yearsCol {
                 border-right: 1px solid rgba(0, 0, 0, 0.212);
               }
