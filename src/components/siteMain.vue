@@ -2,9 +2,13 @@
   <main>
     <section id="welcomeToFable">
         <div class="jumboImage position-relative">
-          <img v-if="active == 0" class="trenino" :src="bgs1[active]" alt="#">
-          <img v-else :src="bgs1[active]" class="bgJumboFable" alt="#">
-          <img v-show="active == 0" class="lego" src="/fable/img/slider_slide3_img3.png" alt="#">
+          <transition-group name="try">
+              <img v-show="index == active" :class="index == 0 ? 'trenino' : 'bgJumboFable'" v-for="(img, index) in bgs1" 
+              class="try-item " :key="index" :src="img" alt="#">
+          </transition-group>
+          <transition name="try">
+              <img v-show="active == 0" class="lego try-item" src="/fable/img/slider_slide3_img3.png" alt="#">
+          </transition>
           <!--  -->
           <div class="slideBars">
               <div @click="changeBg(index)" class="bar" :class="(active == index && index > 0) ? 'activeBar white' : active == index ? 'activeBar' : ''"
@@ -136,7 +140,9 @@
                     <div class="row g-2">
 
                           <div class="slideImages col-12 position-relative"> 
-                              <img class="img" :src="slideImgs[active]" alt="#">   
+                              <transition-group name="try">
+                                  <img v-show="index == active" v-for="(img, index) in slideImgs" :key="index" class="img try-item" :src="img" alt="#">  
+                              </transition-group> 
                               <img  @click="nextSlide()" class="nextSlide position-absolute top-50 end-0 slideIconHover" src="/fable/img/slider_next.png" alt="#">
                               <img @click="prevSlide()" class="prevSlide position-absolute top-50 start-0 slideIconHover" src="/fable/img/slider_previous.png" alt="#">
                           </div>
@@ -166,7 +172,11 @@
 
     <section id="ourClass">
 
-      <div class="jumboImage" :style="`background-image: url(${ourclassBgs[active2]})`">
+      <div  class="jumboImage">
+        <transition-group name="try">
+            <img v-show="index == active2" v-for="(img, index) in ourclassBgs" 
+                :key="index" :src="img" class="jumboSpecial try-item" alt="#">
+        </transition-group>
         <div class="overlay">
           <div class="myContainer">
               <div class="row">
@@ -230,7 +240,7 @@
 
                   <!-- card -->
                   <div class="row g-3 pt-4">
-                      <div v-for="(card, index) in ourClassCards" :key="index" class="col-6 d-flex">
+                      <div v-for="(card, index) in ourClassCards" :key="index" class="cardCont col-6 d-flex">
                           <div class="myCard col-6 d-flex flex-wrap ">
                               <div class="pt-3 ps-3 col-12 mb-5">
                                   <p class="fs-4">
@@ -263,7 +273,7 @@
                               <!-- / class size -->
                           </div>
 
-                          <div class="col-6 position-relative">
+                          <div class="col-6 imageCol position-relative">
                               <img :src="card.img" alt="#">
                               <button class="btn position-absolute bottom-0 end-0 bgOrange d-flex align-items-center normalBtn">
                                   READ MORE
@@ -431,7 +441,10 @@
 
 
     <section id="news" class="py-4">
-        <div class="jumboImage" :style="`background-image: url(${newsSlides[active2]})`">
+        <div class="jumboImage">
+          <transition-group name="try">
+              <img v-show="index == active2" v-for="(img, index) in newsSlides" :key="index" :src="img" alt="#" class="jumboSpecial try-item" >
+          </transition-group>
 
             <div class="overlay">
 
@@ -639,7 +652,7 @@ export default {
             bgs1: [
               '/fable/img/slider_slide3_img2.png',
               'https://www.ioamofirenze.it/wp-content/uploads/2013/09/smilinghand.jpg',
-              'https://www.pngitem.com/pimgs/m/74-743340_kids-hands-png-child-development-transparent-png.png'
+              'https://previews.123rf.com/images/nakedking/nakedking1812/nakedking181200365/114899455-many-coloured-children-hands.jpg'
             ],
           /* / jumbo slides welcome */
 
@@ -925,6 +938,33 @@ export default {
 button:focus {
   box-shadow: 2px 2px 2px #9c253d!important;
 }
+
+.jumboSpecial {
+      min-width: 1440px;
+    height: 500px;
+    position: absolute;
+    z-index: -1;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+}
+
+.try-item {
+  transition: all 1.5s;
+  position: absolute;
+}
+.try-enter, .try-leave-to
+/* .try-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  filter: brightness(1.3);
+  transition: 0s;
+}
+.try-leave-active {
+  opacity: 0;
+  /* position: absolute; */
+}
+/* / slides transition 1 */
+
 .bgJumboFable {
     width: 100%;
     height: 100%;
@@ -1105,6 +1145,7 @@ button:focus {
             }
 
             .slideImages {
+              height: 400px;
               .img {
                 height: 100%;
                 width: 100%;
@@ -1137,7 +1178,7 @@ button:focus {
 
       #ourClass {
         .jumboImage {
-            background-image: url("/fable/img/gallery_07-690x506.jpg");
+            /* background-image: url("/fable/img/gallery_07-690x506.jpg"); */
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -1145,7 +1186,7 @@ button:focus {
 
             .overlay {
                   height: 100%;
-                  background-color: #0000003d;
+                  background-color: #0000001a;
                   color: white;
 
                   .img span {
@@ -1179,14 +1220,27 @@ button:focus {
             p {
               margin: 0;
             }
+
+           
+            .cardCont:hover .myCard, .cardCont:hover .imageCol{
+                box-shadow: 6px 4px 5px grey;
+            }
+           
             .myCard {
               background-color: #56509f;
               color: white;
-
+              border-bottom-left-radius: 1rem;
+              border-top-left-radius: 1rem;
+              transition: 0.3s;
+              
               .yearsCol {
-                border-right: 1px solid rgba(255, 255, 255, 0.212);
+                border-right: 1px solid rgba(0, 0, 0, 0.212);
               }
               
+            }
+
+            .imageCol {
+              transition: 0.3s;
             }
 
             img {
@@ -1309,7 +1363,7 @@ button:focus {
             height: 500px;
 
           .overlay{
-              background-color: rgba(0, 0, 0, 0.404);
+              background-color: rgba(0, 0, 0, 0.164);
               height: 100%;
               color: white;
 
@@ -1344,6 +1398,13 @@ button:focus {
 
           .myCard {
             text-align: start;
+            transition: 00.3s;
+              &:hover {
+                  background-color: #f5f5f5;
+                  padding: 0;
+                  border-radius: 1rem;
+                  box-shadow: 2px 2px 2px grey;
+              }
               .img {
                 position: relative;
 
