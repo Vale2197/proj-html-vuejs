@@ -607,28 +607,43 @@
                       <!-- / card -->
 
 
-                      <div class="row pt-5">
+                      <div class="row pt-5 position-relative">
                           <div class="userContact col-6">
                               <label for="name" class="position-relative">
-                                  <input class="form-control" type="text" placeholder="Your Name *">
+                                  <input v-model="user.name" class="form-control" type="text" placeholder="Your Name *">
                                   <img class="position-absolute" src="/fable/img/image.png" alt="#">
                               </label>
-                              <input class="form-control my-3" type="text" placeholder="Your E-mail *">
-                              <input class="form-control" type="text" placeholder="Subject">
+                              <input v-model="user.mail" class="form-control my-3" type="text" placeholder="Your E-mail *">
+                              <input v-model="user.subject" class="form-control" type="text" placeholder="Subject">
                           </div>
                           <!-- / usercontact -->
 
                           <div class="txtArea col-6">
-                              <textarea class="form-control" style="height: 100%" placeholder="Your Message *"></textarea>
+                              <textarea v-model="user.txt" class="form-control" style="height: 100%" placeholder="Your Message *"></textarea>
                           </div>
                           <!-- / form -->
+                          <transition name="sendM">
+                            <div v-show="sendM == true" class="sendedM" style="width:50%">
+                                <p>
+                                  <i class="fas fa-check-circle"></i> Il suo messaggio è stato inviato con successo
+                                </p>
+                            </div>
+                          </transition>
+                          <transition name="sendM">
+                              <div v-show="errorM == true" class="errorM" style="width: 50%">
+                                  <p>
+                                    <i class="fas fa-exclamation-circle"></i> Le chiediamo di riempire tutti i campi richiesti
+                                  </p>
+                              </div>
+                          </transition>
                       </div>
                       
                       <div class="text-center col-12 mt-4">
-                          <button class="btn bgOrange normalBtn">
+                          <button @click="userMsg()" class="btn bgOrange normalBtn">
                               SEND MESSAGE
                           </button>
                       </div>
+
                   </div>
                   <!-- / row -->
              </div>
@@ -651,6 +666,16 @@ export default {
     data() {
       return {
           show: true,
+
+          user: {
+            name: '',
+            mail: '',
+            subject: '',
+            txt: '',
+          },
+
+          sendM: false,
+          errorM: false,
 
           /* jumbo slides welcome */
             bgs1: [
@@ -961,6 +986,23 @@ export default {
     changeBg(index) {
         this.active = index;
       },
+
+      userMsg() {
+        if(this.user.name == '' || this.user.mail == '' || this.txt == '' ) {
+          this.errorM = true;
+          setTimeout(() => this.errorM = false, 3000);
+
+        }
+        else {
+          this.sendM = true
+           setTimeout(() => this.sendM = false, 3000);
+        }
+          this.user.mail = '';
+          this.user.subject = '';
+          this.user.txt = '';
+          this.user.name = '';
+       
+      },
     },
     mounted() {
       setInterval(() => {
@@ -980,6 +1022,56 @@ button:focus {
   box-shadow: 2px 2px 2px #9c253d!important;
 }
 
+.errorM {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    font-size: 1.5rem;
+    background-color: #f5f5f5;
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px grey;
+
+       p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      color: var(--titleColor);
+        i {
+              font-size: 3rem;
+              padding-right: 2rem;
+              color: red;
+        }
+    }
+}
+
+.sendedM {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    font-size: 1.5rem;
+    background-color: #f5f5f5;
+    padding: 2rem 5rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px grey;
+
+    p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      color: var(--titleColor);
+        i {
+              font-size: 3rem;
+              padding-right: 2rem;
+              color: green;
+        }
+    }
+}
+
 .jumboSpecial {
       min-width: 1440px;
     height: 500px;
@@ -995,7 +1087,7 @@ button:focus {
   position: absolute;
 }
 .try-enter, .try-leave-to
-/* .try-leave-active below version 2.1.8 */ {
+  {
   opacity: 0;
   filter: brightness(1.3);
   transition: 0s;
@@ -1018,6 +1110,16 @@ button:focus {
 
 /* / txt transition (overview, WELCOME TO FABLE) */
 
+/* transition sendM */
+.sendM-enter-active, .sendM-leave-active {
+  transition: opacity 0.5s;
+}
+.sendM-enter, .sendM-leave-to {
+  opacity: 0;
+   position: absolute;
+   transition: 0.5s;
+}
+/* / transition send M */
 
 /* transition rev-fade news section */
  .rev-fade-item {
@@ -1306,7 +1408,6 @@ button:focus {
 
              &:hover {
                padding: 0;
-               box-shadow: 4px 6px 5px grey;
                
              }
            }
@@ -1395,7 +1496,6 @@ button:focus {
               &:hover {
                 background-color: #f5f5f5;
                 padding-left: 0;
-                box-shadow: 2px 2px 5px grey;
                 border-radius: 1rem;
               }
 
@@ -1487,7 +1587,6 @@ button:focus {
                   background-color: #f5f5f5;
                   padding: 0;
                   border-radius: 1rem;
-                  box-shadow: 2px 2px 2px grey;
               }
               .img {
                 position: relative;

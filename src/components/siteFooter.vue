@@ -27,7 +27,7 @@
 
                       <ul>
                           <li v-for="index in 6" :key="index" class="fs-6 fw-light mb-2">
-                              MONTH (YEAR)
+                             <a href="#"> MONTH (YEAR) </a> 
                           </li>
                       </ul>
 
@@ -87,7 +87,7 @@
               </div>
               <div>
                   <p class="fs-6 descr text-center">
-                     &#169; fable- children kindergarten Lorem, ipsum. 
+                     &#169; fable- children kindergarten Lorem, ipsum.   
                   </p>
               </div>
         </div>
@@ -135,6 +135,16 @@ export default {
 
 <style lang="scss">
   footer {
+    a {
+      text-decoration: none;
+      color: white;
+      transition: 0.2s;
+
+      &:hover {
+        font-weight: bold;
+        color: white;
+      }
+    }
     ul {
       padding: 0!important;
       list-style-type: none;
@@ -170,6 +180,17 @@ export default {
           width: 120px;
           height: 120px;
           object-fit: cover;
+        }
+
+        .cardFooter{
+          cursor: pointer;
+          transition: 0.3s;
+
+          &:hover {
+            border-bottom: 2px solid white;
+            margin-bottom: 0.2rem;
+            padding-bottom: 0.2rem;
+          }
         }
       }
     }
